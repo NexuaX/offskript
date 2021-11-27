@@ -1,0 +1,96 @@
+.container {
+    background-color: var(--base-jet);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: 100vh;
+}
+.container::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url("../img/film_strip.png");
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    mix-blend-mode: multiply;
+    background-position: center;
+    z-index: 1;
+    opacity: 0.5;
+}
+.container :is(.logo-pane, .form-pane) {
+    width: clamp(var(--width-phone), 75%, 420px);
+    z-index: 2;
+}
+.container .logo-pane img {
+    width: 100%;
+}
+.container .messages {
+    color: var(--base-cultured);
+    text-align: center;
+}
+.container .form-pane .form-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container .form-pane .form-column > *:not(:last-of-type) {
+    margin-bottom: 0.5em;
+}
+@supports (gap: 0.5em) {
+    .container .form-pane .form-column {
+        gap: 0.5em;
+    }
+    .container .form-pane .form-column > *:not(:last-of-type) {
+        margin-bottom: 0;
+    }
+}
+.container .form-pane .form-column input {
+    box-sizing: border-box;
+    border: 0;
+    width: 80%;
+    font-size: 1.1rem;
+    padding: 0.5em 1.5em;
+    height: 3em;
+    border-radius: 1.5em;
+}
+.container .form-pane .form-row a {
+    text-decoration: none;
+    color: var(--base-cultured);
+    border: 1px solid transparent;
+    transition: border-bottom 0.1s;
+}
+.container .form-pane .form-row a:hover {
+    border-bottom: 1px solid var(--base-cultured);
+}
+.container .form-pane .form-row {
+    display: flex;
+    margin: 1em auto 0;
+    width: 70%;
+    justify-content: space-between;
+    align-items: center;
+}
+.container .form-pane .sign-up-area {
+    display: flex;
+    margin-top: 2em;
+    flex-direction: column;
+    align-items: center;
+}
+.container .form-pane .sign-up-area p {
+    color: var(--base-cultured)
+}
+
+@media only screen and (min-width: 1280px) {
+    .container {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .container :is(.logo-pane, .form-pane) {
+        width: calc(var(--width-large-monitor) * 0.4);
+    }
+    .container .form-pane .form-column {
+        margin-top: 12em;
+    }
+}
