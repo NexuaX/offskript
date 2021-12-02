@@ -1,0 +1,123 @@
+/* ******************************* */
+/* BASE CSS File for all the sites */
+/* ******************************* */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+:root {
+    --hex-jet: #2E2E2E;
+    --hex-cultured: #F6F6F6;
+    --hex-cinnabar: #DE4D40;
+    --hex-airblue: #88A3BF;
+    --hex-honeyyellow: #F5B13D;
+    --hex-wisteria: #B497D8;
+    --hex-emerald: #45CB85;
+    --hex-jeans: #52AEF4;
+
+    --rgb-jet: 46, 46, 46;
+    --rgb-cultured: 246, 246, 246;
+    --rgb-cinnabar: 222, 77, 64;
+    --rgb-airblue: 136, 163, 191;
+    --rgb-honeyyellow: 245, 177, 61;
+    --rgb-wisteria: 180, 151, 216;
+    --rgb-emerald: 69, 203, 133;
+    --rgb-jeans: 82, 174, 244;
+
+    --width-min: 320px;
+    --width-phone: 600px;
+    --width-tablet: 900px;
+    --width-laptop: 1200px;
+    --width-desktop: 1800px;
+    --current-breakpoint: 320px;
+
+    --margin: 1em;
+    --padding: 0.5em;
+    --border: 0.2em;
+    --gap: 0.5em;
+    --nav-height: 4em;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comfortaa', cursive;
+    background-color: var(--hex-cultured);
+    color: var(--hex-jet);
+    box-sizing: border-box;
+    position: relative;
+    display: grid;
+    min-height: 100vh;
+}
+
+@media (min-width: 600px) {
+    :root {
+        --current-breakpoint: 600px;
+    }
+}
+
+@media (min-width: 900px) {
+    :root {
+        --current-breakpoint: 900px;
+    }
+}
+
+@media (min-width: 1200px) {
+    :root {
+        --current-breakpoint: 1200px;
+    }
+    body {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 1800px) {
+    :root {
+        --current-breakpoint: 1800px;
+    }
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+button {
+    border: none;
+    font-size: 1.1em;
+    --padding: 0.5em 1.8em;
+    padding: var(--padding);
+    border-radius: 1.5em;
+    color: var(--hex-cultured);
+    background-color: var(--hex-cinnabar);
+    outline: none;
+    transition: box-shadow .1s;
+}
+button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0.1em 0.1em var(--hex-cultured);
+}
+
+.flex {
+    display: flex;
+}
+.grid {
+    display: grid;
+}
+.icon {
+    font-family: "Anicons Regular", sans-serif;
+}
+.signature {
+    position: absolute;
+    top: auto; right: 0.2em; bottom: 0.2em; left: auto;
+    inset: auto 0.2em 0.2em auto;
+    color: var(--hex-cultured);
+    font-weight: 300;
+    opacity: 0.7;
+    z-index: 2;
+}
