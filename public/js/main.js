@@ -1,5 +1,4 @@
-const hamburgerButton = document.querySelector(".hamburger");
-const navigationItems = document.querySelector(".nav-items");
+const hamburgerButton = document.querySelector(".nav__hamburger");
 const bodyContainer = document.querySelector("body");
 
 hamburgerButton.addEventListener("click", () => {

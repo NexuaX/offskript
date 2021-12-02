@@ -5,26 +5,28 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/base.css">
     <link rel="stylesheet" href="/public/css/login.css">
     <title>offscript - login</title>
 </head>
 <body>
     <div class="container">
         <div class="logo-pane">
-            <a href="/"><img src="/public/img/logo.png" alt="offskript logo"></a>
+            <a href="/">
+                <img src="/public/img/logo_slim.png" alt="offskript logo" class="logo-img">
+            </a>
         </div>
         <div class="form-pane">
-            <div class="messages">
-                <?php
+            <form method="POST">
+                <div class="messages">
+                    <?php
                     if (isset($messages)) {
                         foreach ($messages as $message) {
                             echo $message;
                         }
                     }
-                ?>
-            </div>
-            <form method="POST">
+                    ?>
+                </div>
                 <div class="form-column">
                     <input type="text" placeholder="login" name="email">
                     <input type="password" placeholder="password" name="password">
