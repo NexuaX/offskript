@@ -88,6 +88,23 @@
     width: max(var(--width-min), 90%);
 }
 
+.footer {
+    grid-template-columns: var(--width-min);
+    background-color: var(--hex-jet);
+    color: var(--hex-cultured);
+    justify-content: center;
+    padding-bottom: calc(var(--padding) * 3);
+}
+.footer__logo {
+    padding: calc(var(--padding) * 2);
+}
+.footer-nav {
+    grid-template-rows: repeat(2, 1fr);
+    grid-auto-flow: column;
+    justify-content: space-around;
+    gap: var(--gap);
+}
+
 @media (max-width: calc(900px - 1px)) {
     body[data-navigation-visible="true"] .nav__hamburger {
         font-variation-settings: "TIME" 100;
