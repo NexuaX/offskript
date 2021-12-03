@@ -6,35 +6,14 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>offskript - home</title>
-    <link rel="stylesheet" href="/public/css/base.css">
-    <link rel="stylesheet" href="/public/css/common-main.css">
+    <?php
+        include "commons/links.php";
+        include "commons/scripts.php"; ?>
     <link rel="stylesheet" href="/public/css/index.css">
-    <link href="https://res.cloudinary.com/dr6lvwubh/raw/upload/v1581441981/Anicons/anicons-regular.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/9e15be8231.js" crossorigin="anonymous"></script>
-    <script src="/public/js/main.js" defer></script>
 </head>
 <body data-navigation-visible="false">
 
-    <nav class="grid nav">
-        <div class="nav__hamburger icon">A</div>
-        <img src="/public/img/logo_slim.png" alt="logo" class="nav__logo">
-        <div class="grid nav-items">
-            <div class="nav-item">
-                <a href="/explorer" class="nav-item__link">Explorer</a>
-            </div>
-            <div class="nav-item">
-                <a href="/social" class="nav-item__link">Social</a>
-            </div>
-            <div class="nav-item">
-                <a href="/login" class="nav-item__link">Login</a>
-            </div>
-            <div class="nav-item">
-                <a href="/register" class="nav-item__link button-link">
-                    <button>Sign Up</button>
-                </a>
-            </div>
-        </div>
-    </nav>
+    <?php include "commons/nav.php"; ?>
 
     <div class="content-wrapper">
 
@@ -119,15 +98,7 @@
             </section>
         </main>
 
-        <footer class="grid footer">
-            <img src="/public/img/logo_slim.png" alt="logo" class="footer__logo">
-            <div class="grid footer-nav">
-                <div class="footer-nav-item">Home</div>
-                <div class="footer-nav-item">Explore</div>
-                <div class="footer-nav-item">About us</div>
-                <div class="footer-nav-item">Credits</div>
-            </div>
-        </footer>
+        <?php include "commons/footer.php"; ?>
 
     </div>
 </body>
