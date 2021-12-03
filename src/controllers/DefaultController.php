@@ -8,4 +8,8 @@ class DefaultController extends AppController {
         $this->render('index');
     }
 
+    public function explorer() {
+        $this->render('explorer');
+    }
+
 }
