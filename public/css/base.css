@@ -112,6 +112,18 @@ button:hover {
 .icon {
     font-family: "Anicons Regular", sans-serif;
 }
+.color-movie {
+    background-color: var(--hex-honeyyellow);
+}
+.color-show {
+    background-color: var(--hex-jeans);
+}
+.color-game {
+    background-color: var(--hex-wisteria);
+}
+.color-anime {
+    background-color: var(--hex-emerald);
+}
 .signature {
     position: absolute;
     top: auto; right: 0.2em; bottom: 0.2em; left: auto;

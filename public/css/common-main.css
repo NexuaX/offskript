@@ -85,6 +85,7 @@
 .top-content__title {
     text-align: center;
     font-weight: normal;
+    padding: calc(var(--padding) / 2);
     width: max(var(--width-min), 90%);
 }
 
