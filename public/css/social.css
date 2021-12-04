@@ -1,0 +1,196 @@
+@import "search-bar.css";
+
+.main {
+    justify-items: center;
+    width: 100%;
+}
+
+@media (min-width: 600px) {
+    .main {
+        grid-template-columns: auto max-content;
+    }
+}
+@media (min-width: 900px) {
+    .main {
+        grid-template-columns: 500px max-content;
+        justify-content: center;
+    }
+}
+@media (min-width: 1200px) {
+    .main {
+        grid-template-columns: 700px max-content;
+    }
+}
+
+.section__title {
+    margin: 0.3em 0;
+}
+.section__horizontal-line {
+    border-bottom: var(--border) solid var(--hex-cinnabar);
+    margin-bottom: var(--margin);
+}
+
+.section--user-activity {
+    flex-direction: column;
+    padding: var(--padding);
+    width: 100%;
+}
+.user-activity-grid {
+    gap: var(--gap);
+}
+.user-activity-item {
+    background-color: white;
+}
+.user-activity-item__poster {
+    width: calc(var(--width-min) * 0.35);
+    align-self: start;
+}
+.item-details {
+    flex-grow: 1;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    padding: var(--padding);
+}
+.item-details__title {
+    grid-column: 1 / span 2;
+    margin: 0;
+}
+.item-stats {
+    font-size: 1.1em;
+    align-items: baseline;
+    align-self: center;
+    justify-self: end;
+}
+.item-stats .fas {
+    padding: calc(var(--padding) / 2);
+}
+.item-stats__star {
+    color: var(--hex-airblue);
+}
+.item-details__item-type {
+    align-self: center;
+    justify-self: start;
+    padding: calc(var(--padding) / 2) var(--padding);
+    border-radius: calc(1em + var(--padding) / 2);
+}
+.user-details {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: end;
+    justify-content: end;
+}
+.user-name {
+    margin: 0 var(--margin) 0 0;
+}
+.user-profile {
+    width: calc(var(--width-min) * 0.25);
+}
+
+@media (min-width: 900px) {
+
+}
+
+.section--random-users {
+    flex-direction: column;
+    padding: var(--padding);
+    width: 100%;
+}
+.random-user-item {
+    background-color: white;
+}
+.random__user-profile {
+    width: calc(var(--width-min) * 0.25);
+    align-self: start;
+}
+.random-user-details {
+    padding: var(--padding);
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    gap: var(--gap);
+}
+.random__user-name {
+    margin: 0;
+    grid-column: span 4;
+}
+.random-user__vertical-line {
+    grid-row: span 2;
+    border-right: var(--border) solid var(--hex-cinnabar);
+}
+.stat-item {
+    align-items: center;
+}
+.stat-item .fas {
+    margin-right: calc(var(--margin) / 2);
+}
+.stat-item__star {
+    color: var(--hex-airblue);
+}
+.stat-item__user-plus {
+    color: var(--hex-cinnabar);
+}
+.circle {
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    margin-right: calc(var(--margin) / 2);
+}
+
+.section--trending {
+    flex-direction: column;
+    padding: var(--padding);
+    width: 100%;
+}
+.trending-grid {
+    grid-template-columns: calc(var(--width-min) - 20px);
+    grid-auto-flow: column;
+    grid-auto-columns: calc(var(--width-min) - 20px);
+    overflow-y: auto;
+    max-width: 100%;
+}
+.trending-grid-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+.trending-grid-item:hover {
+    box-shadow: 0 0 7px 0 var(--hex-jet);
+}
+.trending-grid-item:hover .trending-grid-item__poster {
+    transform: scale(1.1);
+}
+.trending-grid-item__poster {
+    transition: transform 0.2s;
+}
+.trending-item-details {
+    position: absolute;
+    top: auto; right: 0; bottom: 0; left: 0;
+    background-color: rgba(var(--rgb-cultured), 0.8);
+    backdrop-filter: blur(0.5em);
+    border-bottom: 2px solid var(--hex-cinnabar);
+    padding: calc(var(--padding) / 2);
+    text-shadow: var(--hex-cultured) 0 0 1em;
+}
+.trending-item-details__title {
+    margin: 0;
+    padding: var(--padding) calc(var(--padding) / 2);
+    text-align: center;
+}
+.item-stats {
+    justify-content: center;
+}
+.item-stats__heart {
+    color: var(--hex-cinnabar);
+}
+
+@media (min-width: 600px) {
+    .section--trending {
+        grid-column: span 2;
+    }
+    .trending-grid {
+        grid-template-columns: calc(var(--width-min) - 50px);
+        grid-auto-flow: column;
+        grid-auto-columns: calc(var(--width-min) - 50px);
+    }
+}

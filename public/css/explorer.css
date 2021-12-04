@@ -1,59 +1,4 @@
-
-.search-bar {
-    min-width: clamp(var(--width-min), 60vw, var(--current-breakpoint) * 0.7);
-    padding: var(--padding) calc(var(--padding) * 1.5);
-    font-size: 1.2em;
-    border-radius: calc(1em + var(--padding));
-    border: none;
-}
-.filters {
-    grid-template-columns: repeat(4, 1fr);
-    gap: calc(var(--gap) / 2);
-    margin-bottom: var(--margin);
-}
-.filters__title {
-    grid-column: span 4;
-    margin: calc(var(--margin) / 2);
-}
-.filters__checkbox {
-    margin: 0;
-    transform: scale(1.3);
-}
-.advanced-filters-button {
-    grid-column: 3 / span 2;
-    grid-row: 2 / span 2;
-    background-color: var(--hex-airblue);
-    place-self: center end;
-    text-align: center;
-    padding: var(--padding);
-    border-radius: calc(1em + var(--padding));
-    color: var(--hex-jet);
-    max-width: 8em;
-    cursor: pointer;
-    transition: box-shadow 0.2s, color 0.2s;
-}
-.advanced-filters-button:hover {
-    color: var(--hex-cultured);
-    box-shadow: 0 0 0.1em 0.1em var(--hex-cultured);
-}
-
-@media (min-width: 1200px) {
-    .filters {
-        grid-template-columns: repeat(8, 1fr);
-        gap: var(--gap);
-        margin-top: calc(var(--margin) / 2);
-        align-items: center;
-    }
-    .filters__title {
-        grid-column: auto;
-    }
-    .advanced-filters-button {
-        grid-column: 7 / span 2;
-        grid-row: auto;
-        place-self: unset;
-        max-width: none;
-    }
-}
+@import "search-bar.css";
 
 .main {
     justify-items: center;
@@ -149,9 +94,6 @@
 }
 
 @media (min-width: 1200px) {
-    .search-bar {
-        min-width: var(--width-tablet);
-    }
     .section--explorer {
         width: var(--width-laptop);
     }

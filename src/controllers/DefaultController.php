@@ -12,4 +12,8 @@ class DefaultController extends AppController {
         $this->render('explorer');
     }
 
+    public function social() {
+        $this->render('social');
+    }
+
 }
