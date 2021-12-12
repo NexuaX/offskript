@@ -10,5 +10,6 @@ Router::get('explorer', 'DefaultController');
 Router::get('social', 'DefaultController');
 Router::get('profile', 'ProfileController');
 Router::post('login', 'SecurityController');
+Router::post('register', 'SecurityController');
 
 Router::run($path);
