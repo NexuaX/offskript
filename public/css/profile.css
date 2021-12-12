@@ -1,0 +1,270 @@
+.profile-summary {
+    margin-top: var(--margin);
+    grid-template-columns: max-content auto;
+    gap: var(--gap);
+    width: 100%;
+    padding: var(--padding);
+}
+.profile-image-wrapper {
+    align-self: start;
+    width: 150px;
+    height: 150px;
+    padding: var(--padding);
+    border-radius: 50%;
+    background:conic-gradient(from 90deg at 50% 50%, #F5B13D 0%, #B497D8 10%, #B497D8 35%, #45CB85 45%, #45CB85 55%, #52AEF4 65%, #52AEF4 90%, #F5B13D 100%);
+}
+.profile-image {
+    border-radius: 50%;
+}
+.user-stats {
+    max-width: 25em;
+    justify-self: center;
+    grid-column: span 2;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+    justify-items: center;
+}
+.user-stats__horizontal-line {
+    grid-column: span 2;
+    border-bottom: var(--border) solid var(--hex-cinnabar);
+    width: 100%;
+}
+.share-profile-button {
+    grid-column: span 2;
+    background-color: var(--hex-airblue);
+    text-align: center;
+    padding: var(--padding);
+    border-radius: 100vw;
+    color: var(--hex-jet);
+    cursor: pointer;
+    transition: box-shadow 0.2s, color 0.2s;
+}
+.share-profile-button:hover {
+    color: var(--hex-cultured);
+    box-shadow: 0 0 0.1em 0.1em var(--hex-cultured);
+}
+
+@media (min-width: 600px) {
+    .profile-summary {
+        width: var(--current-breakpoint);
+        margin-bottom: var(--margin);
+    }
+    .profile-image-wrapper {
+        grid-row: span 2;
+        width: 250px;
+        height: 250px;
+    }
+    .user-stats {
+        justify-self: start;
+        grid-column: 2;
+    }
+    .share-profile-button {
+        grid-column: 1;
+    }
+}
+
+@media (min-width: 1200px) {
+    .profile-summary {
+        width: var(--width-laptop);
+    }
+}
+
+.main {
+    justify-items: center;
+    width: 100%;
+}
+
+@media (min-width: 600px) {
+    .main {
+        grid-template-columns: minmax(300px, auto) max-content;
+    }
+}
+@media (min-width: 900px) {
+    .main {
+        grid-template-columns: minmax(500px, auto) max-content;
+        justify-content: center;
+    }
+}
+@media (min-width: 1200px) {
+    .main {
+        grid-template-columns: minmax(700px, auto) max-content;
+        justify-content: center;
+    }
+}
+
+.section__title {
+    margin: 0.3em 0;
+}
+.section__horizontal-line {
+    border-bottom: var(--border) solid var(--hex-cinnabar);
+    margin-bottom: var(--margin);
+}
+
+.section--user-activity {
+    flex-direction: column;
+    padding: var(--padding);
+    width: 100%;
+}
+.user-activity-grid {
+    gap: var(--gap);
+}
+.user-activity-item {
+    background-color: white;
+}
+.user-activity-item__poster {
+    width: calc(var(--width-min) * 0.35);
+    align-self: start;
+}
+.item-details {
+    flex-grow: 1;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    padding: var(--padding);
+}
+.item-details__title {
+    grid-column: 1 / span 2;
+    margin: 0;
+}
+.item-stats {
+    font-size: 1.1em;
+    align-items: baseline;
+    align-self: center;
+    justify-self: end;
+}
+.item-stats .fas {
+    padding: calc(var(--padding) / 2);
+}
+.item-stats__star {
+    color: var(--hex-airblue);
+}
+.item-details__item-type {
+    align-self: center;
+    justify-self: start;
+    padding: calc(var(--padding) / 2) var(--padding);
+    border-radius: calc(1em + var(--padding) / 2);
+}
+.user-details {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: end;
+    justify-content: end;
+}
+.user-name {
+    margin: 0 var(--margin) 0 0;
+}
+.user-profile {
+    width: calc(var(--width-min) * 0.25);
+}
+
+@media (min-width: 900px) {
+
+}
+
+.section--random-users {
+    flex-direction: column;
+    padding: var(--padding);
+    width: 100%;
+}
+.random-user-item {
+    background-color: white;
+}
+.random__user-profile {
+    width: calc(var(--width-min) * 0.25);
+    align-self: start;
+}
+.random-user-details {
+    padding: var(--padding);
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    gap: var(--gap);
+}
+.random__user-name {
+    margin: 0;
+    grid-column: span 4;
+}
+.random-user__vertical-line {
+    grid-row: span 2;
+    border-right: var(--border) solid var(--hex-cinnabar);
+}
+.stat-item {
+    align-items: center;
+}
+.stat-item .fas {
+    margin-right: calc(var(--margin) / 2);
+}
+.stat-item__star {
+    color: var(--hex-airblue);
+}
+.stat-item__user-plus {
+    color: var(--hex-cinnabar);
+}
+.circle {
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    margin-right: calc(var(--margin) / 2);
+}
+
+.section--favorites {
+    flex-direction: column;
+    padding: var(--padding);
+    width: 100%;
+}
+.favorite-grid {
+    grid-template-columns: calc(var(--width-min) / 2 - 20px);
+    grid-auto-flow: column;
+    grid-auto-columns: calc(var(--width-min) / 2 - 20px);
+    overflow-y: auto;
+    max-width: 100%;
+}
+.favorite-grid-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+.favorite-grid-item:hover {
+    box-shadow: 0 0 7px 0 var(--hex-jet);
+}
+.favorite-grid-item:hover .favorite-grid-item__poster {
+    transform: scale(1.1);
+}
+.favorite-grid-item__poster {
+    transition: transform 0.2s;
+}
+.favorite-item-details {
+    position: absolute;
+    top: auto; right: 0; bottom: 0; left: 0;
+    background-color: rgba(var(--rgb-cultured), 0.8);
+    backdrop-filter: blur(0.5em);
+    border-bottom: 2px solid var(--hex-cinnabar);
+    padding: calc(var(--padding) / 2);
+    text-shadow: var(--hex-cultured) 0 0 1em;
+}
+.favorite-item-details__title {
+    margin: 0;
+    padding: calc(var(--padding) / 2);
+    text-align: center;
+}
+.favorite-item-details__description {
+    margin: 0;
+    text-align: center;
+}
+.item-stats {
+    justify-content: center;
+}
+.item-stats__heart {
+    color: var(--hex-cinnabar);
+}
+
+@media (min-width: 600px) {
+    .section--trending {
+        grid-column: span 2;
+    }
+    .trending-grid {
+        grid-template-columns: calc(var(--width-min) - 50px);
+        grid-auto-flow: column;
+        grid-auto-columns: calc(var(--width-min) - 50px);
+    }
+}
