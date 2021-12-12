@@ -40,6 +40,12 @@
     text-decoration: underline;
     text-decoration-color: var(--hex-cinnabar);
 }
+.form-title {
+    color: var(--hex-cultured);
+    margin: 1em 0 0;
+    padding-left: 2em;
+    font-weight: lighter;
+}
 .form-column {
     display: flex;
     flex-direction: column;
@@ -98,6 +104,6 @@
         transform: scale(1.2) rotate(-10deg);
     }
     form {
-        margin-top: 8em;
+        margin-top: 2em;
     }
 }

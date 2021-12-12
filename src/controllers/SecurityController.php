@@ -29,4 +29,12 @@ class SecurityController extends AppController {
         header("Location: $url/profile");
     }
 
+    public function register() {
+        if (!$this->isPost()) {
+            return $this->render('register');
+        }
+
+        echo "registered!";
+    }
+
 }

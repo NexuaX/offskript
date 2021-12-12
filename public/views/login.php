@@ -18,6 +18,7 @@
         </div>
         <div class="form-pane">
             <form method="POST">
+                <h2 class="form-title">Login form</h2>
                 <div class="messages">
                     <?php
                     if (isset($messages)) {
@@ -38,7 +39,7 @@
             </form>
             <div class="sign-up-area">
                 <p>New to the platform?</p>
-                <button>Sign Up</button>
+                <a href="/register"><button>Sign Up</button></a>
             </div>
         </div>
     </div>
