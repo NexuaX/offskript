@@ -9,6 +9,7 @@ Router::get('', 'DefaultController');
 Router::get('explorer', 'DefaultController');
 Router::get('social', 'DefaultController');
 Router::get('profile', 'ProfileController');
+Router::get('production', 'ProductionController');
 Router::post('login', 'SecurityController');
 Router::post('register', 'SecurityController');
 
