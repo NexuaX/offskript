@@ -44,22 +44,16 @@
                 <h2 class="section__title">Latest news</h2>
                 <div class="section__horizontal-line"></div>
                 <div class="grid news">
-                    <div class="news-item">
-                        <img src="/public/img/news-images/news1.jpg" alt="news-item__image" class="news-item__image">
-                        <h3 class="news-item__title">Second life for a director!</h3>
-                    </div>
-                    <div class="news-item">
-                        <img src="/public/img/news-images/news2.jpg" alt="news-item__image" class="news-item__image">
-                        <h3 class="news-item__title">Cartoons are getting more popular</h3>
-                    </div>
-                    <div class="news-item">
-                        <img src="/public/img/news-images/news3.jpg" alt="news-item__image" class="news-item__image">
-                        <h3 class="news-item__title">Watch anime about art</h3>
-                    </div>
-                    <div class="news-item">
-                        <img src="/public/img/news-images/news_placeholder.jpeg" alt="news-item__image" class="news-item__image">
-                        <h3 class="news-item__title">Placeholder</h3>
-                    </div>
+                    <?php
+                    if (isset($news)):
+                        foreach ($news as $newsitem): ?>
+                            <div class="news-item">
+                                <img src="/public/img/<?php echo $newsitem->getImageSrc(); ?>" alt="news-item__image" class="news-item__image">
+                                <h3 class="news-item__title"><?php echo $newsitem->getTitle(); ?></h3>
+                            </div>
+                    <?php
+                        endforeach;
+                    endif; ?>
                 </div>
             </section>
             <section class="section section--top-list">

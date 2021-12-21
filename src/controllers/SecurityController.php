@@ -1,6 +1,7 @@
 <?php
 
 require_once 'AppController.php';
+require_once __DIR__."/../repository/UserRepository.php";
 require_once __DIR__ .'/../models/User.php';
 
 
@@ -12,12 +13,14 @@ class SecurityController extends AppController {
             return $this->render('login');
         }
 
-        $user = new User('1', 'admin@offskript.com', 'adminpass', 'Administoreta');
+        $userRepository = UserRepository::getInstance();
 
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        if ($user->getEmail() !== $email) {
+        $user = $userRepository->getUser($email);
+
+        if ($user == null) {
             return $this->render('login', ['messages' => ['User with this email not exist!']]);
         }
 
