@@ -6,12 +6,24 @@ class User {
     private string $email;
     private string $password;
     private string $username;
+    private string $description;
+    private string $date_last_login;
+    private string $id_avatar;
+    private string $status;
 
-    public function __construct(string $id, string $email, string $password, string $username) {
+    public function __construct(string $id, string $email, string $password, string $username, string $description, string $date_last_login, string $id_avatar, string $status) {
         $this->id = $id;
         $this->email = $email;
         $this->password = $password;
         $this->username = $username;
+        $this->description = $description;
+        $this->date_last_login = $date_last_login;
+        $this->id_avatar = $id_avatar;
+        $this->status = $status;
+    }
+
+    public function getId(): string {
+        return $this->id;
     }
 
     public function getEmail(): string {
@@ -20,6 +32,26 @@ class User {
 
     public function getPassword(): string {
         return $this->password;
+    }
+
+    public function getUsername(): string {
+        return $this->username;
+    }
+
+    public function getDescription(): string {
+        return $this->description;
+    }
+
+    public function getDateLastLogin(): string {
+        return $this->date_last_login;
+    }
+
+    public function getIdAvatar(): string {
+        return $this->id_avatar;
+    }
+
+    public function getStatus(): string {
+        return $this->status;
     }
 
 }
