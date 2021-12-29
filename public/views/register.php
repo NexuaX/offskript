@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/public/css/base.css">
     <link rel="stylesheet" href="/public/css/login.css">
+    <script src="https://kit.fontawesome.com/9e15be8231.js" crossorigin="anonymous"></script>
+    <script src="/public/js/registration_validation.js" defer></script>
     <title>offscript - login</title>
 </head>
 <body>
@@ -23,16 +25,26 @@
                 <?php
                 if (isset($messages)) {
                     foreach ($messages as $message) {
-                        echo $message;
+                        echo $message."<br>";
                     }
                 }
                 ?>
             </div>
             <div class="form-column">
-                <input type="text" placeholder="login" name="email">
-                <input type="text" placeholder="username" name="username">
-                <input type="password" placeholder="password" name="password">
-                <input type="password" placeholder="confirm password" name="confirm_password">
+                <div class="input-wrapper">
+                    <input type="email" placeholder="email" name="email" required>
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" placeholder="username" name="username" required>
+                </div>
+                <div class="input-wrapper">
+                    <input type="password" placeholder="password" name="password" required>
+                    <i class="fas fa-eye show-password-button"></i>
+                </div>
+                <div class="input-wrapper">
+                    <input type="password" placeholder="confirm password" name="confirm_password" required>
+                    <i class="fas fa-eye show-password-button"></i>
+                </div>
             </div>
             <div class="form-row">
                 <a href="/login">Already registered?</a>
