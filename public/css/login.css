@@ -51,17 +51,35 @@
     flex-direction: column;
     align-items: center;
 }
-.form-column > *:not(:last-of-type) {
+.form-column > *:not(:last-child) {
     margin-bottom: 0.5em;
 }
 .form-column input {
     box-sizing: border-box;
     border: 0;
-    width: 80%;
+    width: 100%;
     font-size: 1.1rem;
     padding: 0.5em 1.5em;
     height: 3em;
     border-radius: 1.5em;
+}
+.form-column input:invalid {
+    box-shadow: var(--hex-cinnabar) 0 0 2px 2px;
+}
+.input-wrapper {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+.show-password-button {
+    position: absolute;
+    right: 0.4em; top: 0.4em;
+    font-size: 1.8em;
+    height: 1em;
+    width: max-content;
+    cursor: pointer;
+    opacity: 0.8;
 }
 .form-row a {
     text-decoration: none;
