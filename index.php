@@ -12,5 +12,6 @@ Router::get('profile', 'ProfileController');
 Router::get('production', 'ProductionController');
 Router::post('login', 'SecurityController');
 Router::post('register', 'SecurityController');
+Router::get('logout', 'SecurityController');
 
 Router::run($path);

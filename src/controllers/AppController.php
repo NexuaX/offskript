@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__."/../../CookieSession.php";
+
 class AppController {
 
     private string $request;
@@ -22,6 +24,11 @@ class AppController {
 
         if (file_exists($templatePath)) {
             extract($variables);
+            $isUserLogged = CookieSession::isUserLogged();
+
+            if ($isUserLogged) {
+                CookieSession::extendUserCookie();
+            }
 
             ob_start();
             include $templatePath;

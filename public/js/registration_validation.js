@@ -19,9 +19,11 @@ let confirmPasswordShowButton = document.querySelector("input[name=\"confirm_pas
 
 passwordShowButton.addEventListener("click", () => {
     togglePasswordAttribute(passwordInput);
+    toggleEyeIcon(passwordShowButton);
 });
 confirmPasswordShowButton.addEventListener("click", () => {
     togglePasswordAttribute(confirmPasswordInput);
+    toggleEyeIcon(confirmPasswordShowButton);
 });
 
 function togglePasswordAttribute(element) {
@@ -30,5 +32,15 @@ function togglePasswordAttribute(element) {
         element.setAttribute("type", "text");
     } else {
         element.setAttribute("type", "password");
+    }
+}
+
+function toggleEyeIcon(element) {
+    if (element.classList.contains("fa-eye")) {
+        element.classList.remove("fa-eye");
+        element.classList.add("fa-eye-slash")
+    } else {
+        element.classList.remove("fa-eye-slash");
+        element.classList.add("fa-eye")
     }
 }
