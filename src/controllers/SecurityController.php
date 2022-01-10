@@ -4,12 +4,13 @@ require_once 'AppController.php';
 require_once __DIR__."/../repository/UserRepository.php";
 require_once __DIR__ .'/../models/User.php';
 require_once __DIR__ . "/../exceptions/EmailAlreadyUsedException.php";
+require_once __DIR__ . "/../exceptions/UserNotFoundException.php";
 require_once __DIR__."/../../CookieSession.php";
 
 
 class SecurityController extends AppController {
 
-    public function login() {
+    public function login(array $params = []) {
 
         if (!$this->isPost()) {
             $this->render('login');
@@ -22,7 +23,7 @@ class SecurityController extends AppController {
         $password = $_POST['password'];
 
         try {
-            $user = $userRepository->getUser($email);
+            $user = $userRepository->getUserByEmail($email);
         } catch (UserNotFoundException $e) {
             $this->render('login', ['messages' => [$e->errorMessage()]]);
             return;
@@ -33,13 +34,13 @@ class SecurityController extends AppController {
             return;
         }
 
-        CookieSession::logUserCookie(hash("crc32", $user->getUsername()));
+        CookieSession::logUserCookie($user->getId());
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: $url/profile");
     }
 
-    public function register() {
+    public function register(array $params = []) {
 
         if (!$this->isPost()) {
             $this->render('register');
@@ -69,7 +70,7 @@ class SecurityController extends AppController {
         header("Location: $url/login");
     }
 
-    public function logout() {
+    public function logout(array $params = []) {
 
         if (CookieSession::isUserLogged()) {
             CookieSession::destroyUserCookie();

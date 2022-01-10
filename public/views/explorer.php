@@ -29,58 +29,83 @@
                 <h2 class="section__title">Movies</h2>
                 <div class="section__horizontal-line"></div>
                 <div class="grid explorer--grid">
-                    <div class="flex explorer-grid-item">
-                        <img src="/public/img/posters/mandalorian.jpg" alt="poster" class="explorer-grid-item__poster">
-                        <div class="item-details">
-                            <h3 class="item-details__title">Title1</h3>
-                            <div class="flex item-stats">
-                                <i class="fas fa-star item-stats__star"></i>
-                                <span class="item-stats__stars-count">8.4</span>
-                                <span class="item-stats__vertical-line">|</span>
-                                <i class="fas fa-heart item-stats__heart"></i>
-                                <span class="item-stats__hearts-count">234</span>
+                    <?php foreach ($movies ?? [] as $movie): ?>
+                        <a href="/production/<?php echo $movie->getId(); ?>">
+                        <div class="flex explorer-grid-item">
+                            <img src="/public/img/<?php echo $movie->getImageSrc() ?>" alt="poster" class="explorer-grid-item__poster">
+                            <div class="item-details">
+                                <h3 class="item-details__title"><?php echo $movie->getTitle() ?></h3>
+                                <div class="flex item-stats">
+                                    <i class="fas fa-star item-stats__star"></i>
+                                    <span class="item-stats__stars-count"><?php echo $movie->getMark() ?></span>
+                                    <span class="item-stats__vertical-line">|</span>
+                                    <i class="fas fa-heart item-stats__heart"></i>
+                                    <span class="item-stats__hearts-count"><?php echo $movie->getHeartsCount() ?></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="flex explorer-grid-item">
-                        <img src="/public/img/posters/mandalorian.jpg" alt="poster" class="explorer-grid-item__poster">
-                        <div class="item-details">
-                            <h3 class="item-details__title">Title2</h3>
-                            <div class="flex item-stats">
-                                <i class="fas fa-star item-stats__star"></i>
-                                <span class="item-stats__stars-count">8.4</span>
-                                <span class="item-stats__vertical-line">|</span>
-                                <i class="fas fa-heart item-stats__heart"></i>
-                                <span class="item-stats__hearts-count">234</span>
+                        </a>
+                    <?php endforeach ?>
+                </div>
+
+                <h2 class="section__title">Shows</h2>
+                <div class="section__horizontal-line"></div>
+                <div class="grid explorer--grid">
+                    <?php foreach ($shows ?? [] as $show): ?>
+                        <div class="flex explorer-grid-item">
+                            <img src="/public/img/<?php echo $show->getImageSrc() ?>" alt="poster" class="explorer-grid-item__poster">
+                            <div class="item-details">
+                                <h3 class="item-details__title"><?php echo $show->getTitle() ?></h3>
+                                <div class="flex item-stats">
+                                    <i class="fas fa-star item-stats__star"></i>
+                                    <span class="item-stats__stars-count"><?php echo $show->getMark() ?></span>
+                                    <span class="item-stats__vertical-line">|</span>
+                                    <i class="fas fa-heart item-stats__heart"></i>
+                                    <span class="item-stats__hearts-count"><?php echo $show->getHeartsCount() ?></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="flex explorer-grid-item">
-                        <img src="/public/img/posters/mandalorian.jpg" alt="poster" class="explorer-grid-item__poster">
-                        <div class="item-details">
-                            <h3 class="item-details__title">Title3</h3>
-                            <div class="flex item-stats">
-                                <i class="fas fa-star item-stats__star"></i>
-                                <span class="item-stats__stars-count">8.4</span>
-                                <span class="item-stats__vertical-line">|</span>
-                                <i class="fas fa-heart item-stats__heart"></i>
-                                <span class="item-stats__hearts-count">234</span>
+                    <?php endforeach ?>
+                </div>
+
+                <h2 class="section__title">Anime</h2>
+                <div class="section__horizontal-line"></div>
+                <div class="grid explorer--grid">
+                    <?php foreach ($animes ?? [] as $anime): ?>
+                        <div class="flex explorer-grid-item">
+                            <img src="/public/img/<?php echo $anime->getImageSrc() ?>" alt="poster" class="explorer-grid-item__poster">
+                            <div class="item-details">
+                                <h3 class="item-details__title"><?php echo $anime->getTitle() ?></h3>
+                                <div class="flex item-stats">
+                                    <i class="fas fa-star item-stats__star"></i>
+                                    <span class="item-stats__stars-count"><?php echo $anime->getMark() ?></span>
+                                    <span class="item-stats__vertical-line">|</span>
+                                    <i class="fas fa-heart item-stats__heart"></i>
+                                    <span class="item-stats__hearts-count"><?php echo $anime->getHeartsCount() ?></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="flex explorer-grid-item">
-                        <img src="/public/img/posters/mandalorian.jpg" alt="poster" class="explorer-grid-item__poster">
-                        <div class="item-details">
-                            <h3 class="item-details__title">Title4</h3>
-                            <div class="flex item-stats">
-                                <i class="fas fa-star item-stats__star"></i>
-                                <span class="item-stats__stars-count">8.4</span>
-                                <span class="item-stats__vertical-line">|</span>
-                                <i class="fas fa-heart item-stats__heart"></i>
-                                <span class="item-stats__hearts-count">234</span>
+                    <?php endforeach ?>
+                </div>
+
+                <h2 class="section__title">Games</h2>
+                <div class="section__horizontal-line"></div>
+                <div class="grid explorer--grid">
+                    <?php foreach ($games ?? [] as $game): ?>
+                        <div class="flex explorer-grid-item">
+                            <img src="/public/img/<?php echo $game->getImageSrc() ?>" alt="poster" class="explorer-grid-item__poster">
+                            <div class="item-details">
+                                <h3 class="item-details__title"><?php echo $game->getTitle() ?></h3>
+                                <div class="flex item-stats">
+                                    <i class="fas fa-star item-stats__star"></i>
+                                    <span class="item-stats__stars-count"><?php echo $game->getMark() ?></span>
+                                    <span class="item-stats__vertical-line">|</span>
+                                    <i class="fas fa-heart item-stats__heart"></i>
+                                    <span class="item-stats__hearts-count"><?php echo $game->getHeartsCount() ?></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endforeach ?>
                 </div>
             </section>
         </main>

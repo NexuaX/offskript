@@ -10,8 +10,9 @@ class User {
     private string $date_last_login;
     private string $id_avatar;
     private string $status;
+    private string $image_src;
 
-    public function __construct(string $id, string $email, string $password, string $username, string $description, string $date_last_login, string $id_avatar, string $status) {
+    public function __construct(string $id, string $email, string $password, string $username, string $description, string $date_last_login, string $id_avatar, string $status, string $image_src) {
         $this->id = $id;
         $this->email = $email;
         $this->password = $password;
@@ -20,6 +21,7 @@ class User {
         $this->date_last_login = $date_last_login;
         $this->id_avatar = $id_avatar;
         $this->status = $status;
+        $this->image_src = $image_src;
     }
 
     public function getId(): string {
@@ -54,4 +56,7 @@ class User {
         return $this->status;
     }
 
+    public function getImageSrc(): string {
+        return $this->image_src;
+    }
 }

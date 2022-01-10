@@ -4,6 +4,7 @@
 class CookieSession {
 
     const USER_COOKIE = "user";
+    const DEFAULT_TIME = 600;
 
     public static function createCookie(string $name, string $value, int $expires = 0) {
         setcookie($name, $value, $expires);
@@ -24,16 +25,24 @@ class CookieSession {
     }
 
     public static function logUserCookie(string $userToken) {
-        self::createCookie(self::USER_COOKIE, $userToken, time() + 60);
+        self::createCookie(self::USER_COOKIE, $userToken, time() + self::DEFAULT_TIME);
     }
 
     public static function destroyUserCookie() {
         self::deleteCookie(self::USER_COOKIE);
     }
 
-    public static function extendUserCookie(int $duration = 60) {
+    public static function extendUserCookie(int $duration = self::DEFAULT_TIME) {
         if (self::isUserLogged()) {
             self::createCookie(self::USER_COOKIE, $_COOKIE[self::USER_COOKIE], time() + $duration);
+        }
+    }
+
+    public static function getUserCookie(): string {
+        if (self::isCookieValid(self::USER_COOKIE)) {
+            return $_COOKIE[self::USER_COOKIE];
+        } else {
+            return "";
         }
     }
     
