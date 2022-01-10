@@ -18,40 +18,42 @@
     <div class="content-wrapper">
 
         <div class="flex top-content">
-            <div class="grid production-container">
-                <img src="/public/img/posters/mandalorian.jpg" alt="poster" class="production__poster">
-                <div class="production-info">
-                    <h2 class="production__title">The Mandalorian</h2>
-                    <div class="production-stats">
-                        <i class="fas fa-star production-stats__star"></i>
-                        <span class="stats__stars-count">8.4</span>
-                        <span class="production-stats__vertical-line">|</span>
-                        <i class="fas fa-heart production-stats__heart"></i>
-                        <span class="production-stats__hearts-count">234</span>
+            <?php if (isset($production)): ?>
+                <div class="grid production-container">
+                    <img src="/public/img/<?php echo $production->getImageSrc(); ?>" alt="poster" class="production__poster">
+                    <div class="production-info">
+                        <h2 class="production__title"><?php echo $production->getTitle(); ?></h2>
+                        <div class="production-stats">
+                            <i class="fas fa-star production-stats__star"></i>
+                            <span class="stats__stars-count"><?php echo $production->getMark(); ?></span>
+                            <span class="production-stats__vertical-line">|</span>
+                            <i class="fas fa-heart production-stats__heart"></i>
+                            <span class="production-stats__hearts-count"><?php echo $production->getHeartsCount(); ?></span>
+                        </div>
+                        <span class="production__type color-<?php echo $production->getType(); ?>"><?php echo $production->getType(); ?></span>
+                        <p class="production__synopsis"><?php echo $production->getSynopsis(); ?></p>
+                        <p class="production__others">Other details</p>
                     </div>
-                    <span class="production__type color-show">Show</span>
-                    <p class="production__synopsis">Synopsis</p>
-                    <p class="production__others">Other details</p>
+                    <div class="grid production-user-panel">
+                        <p class="user-panel__headline">Your score:</p>
+                        <div class="user-panel-stats-control">
+                            <i class="fas fa-star user-panel__star"></i>
+                            <span class="user-panel__stars-count">8.4</span>
+                            <span class="user-panel__vertical-line">|</span>
+                            <i class="fas fa-heart user-panel__heart"></i>
+                        </div>
+                        <div class="user-panel__button button--blue">
+                            Dodaj do obejrzanych
+                        </div>
+                        <div class="user-panel__button button--blue">
+                            Chcę obejrzeć
+                        </div>
+                        <div class="user-panel__button button--red">
+                            Usuń ustawienia <i class="fas fa-times user-panel__times"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="grid production-user-panel">
-                    <p class="user-panel__headline">Your score:</p>
-                    <div class="user-panel-stats-control">
-                        <i class="fas fa-star user-panel__star"></i>
-                        <span class="user-panel__stars-count">8.4</span>
-                        <span class="user-panel__vertical-line">|</span>
-                        <i class="fas fa-heart user-panel__heart"></i>
-                    </div>
-                    <div class="user-panel__button button--blue">
-                        Dodaj do obejrzanych
-                    </div>
-                    <div class="user-panel__button button--blue">
-                        Chcę obejrzeć
-                    </div>
-                    <div class="user-panel__button button--red">
-                        Usuń ustawienia <i class="fas fa-times user-panel__times"></i>
-                    </div>
-                </div>
-            </div>
+            <?php endif; ?>
         </div>
 
         <main class="grid main">

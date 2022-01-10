@@ -18,7 +18,9 @@ class Router {
     }
 
     public static function run (string $url) {
-        $action = explode("/", $url)[0];
+        $urlArray = explode("/", $url);
+
+        $action = $urlArray[0];
         if (!array_key_exists($action, self::$routes)) {
             die("Wrong url!");
         }
@@ -27,6 +29,6 @@ class Router {
         $object = new $controller;
         $action = $action ?: 'index';
 
-        $object->$action();
+        $object->$action($urlArray);
     }
 }

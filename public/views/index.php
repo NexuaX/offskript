@@ -58,36 +58,26 @@
             </section>
             <section class="section section--top-list">
                 <div class="grid top-lists">
-                    <div class="top-list">
-                        <h3 class="top-list__title">TOP MOVIES</h3>
-                        <div class="grid top-list__body">
-                            <span class="top-list__number">#1</span>
-                            <div class="top-list__data">Movie Title</div>
-                            <span class="top-list__number">#2</span>
-                            <div class="top-list__data">Movie Title</div>
-                            <span class="top-list__number">#3</span>
-                            <div class="top-list__data">Movie Title</div>
-                            <span class="top-list__number">#4</span>
-                            <div class="top-list__data">Movie Title</div>
-                            <span class="top-list__number">#5</span>
-                            <div class="top-list__data">Movie Title</div>
+                    <?php if (isset($topMovies)): ?>
+                        <div class="top-list">
+                            <h3 class="top-list__title">TOP MOVIES</h3>
+                            <div class="grid top-list__body">
+                            <?php foreach ($topMovies as $key => $movie): ?>
+                                <span class="top-list__number">#<?php echo $key; ?></span>
+                                <div class="top-list__data"><?php echo $movie->getTitle(); ?></div>
+                            <?php endforeach; ?>
+                            </div>
                         </div>
-                    </div>
-                    <div class="top-list">
-                        <h3 class="top-list__title">TOP SHOWS</h3>
-                        <div class="grid top-list__body">
-                            <span class="top-list__number">#1</span>
-                            <div class="top-list__data">Show Title</div>
-                            <span class="top-list__number">#2</span>
-                            <div class="top-list__data">Show Title</div>
-                            <span class="top-list__number">#3</span>
-                            <div class="top-list__data">Show Title</div>
-                            <span class="top-list__number">#4</span>
-                            <div class="top-list__data">Show Title</div>
-                            <span class="top-list__number">#5</span>
-                            <div class="top-list__data">Show Title</div>
+                    <?php endif; ?>
+                    <?php if (isset($topShows)): ?>
+                        <div class="top-list">
+                            <h3 class="top-list__title">TOP SHOWS</h3>
+                            <?php foreach ($topShows as $key => $show): ?>
+                                <span class="top-list__number">#<?php echo $key; ?></span>
+                                <div class="top-list__data"><?php echo $show->getTitle(); ?></div>
+                            <?php endforeach; ?>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
             </section>
         </main>

@@ -30,36 +30,24 @@
                 <h2 class="section__title">User activity</h2>
                 <div class="section__horizontal-line"></div>
                 <div class="grid user-activity-grid">
-                    <div class="flex user-activity-item">
-                        <img src="/public/img/posters/avengers.jpg" alt="poster" class="user-activity-item__poster">
-                        <div class="grid item-details">
-                            <h3 class="item-details__title">Title</h3>
-                            <span class="item-details__item-type color-movie">Type</span>
-                            <div class="flex item-stats">
-                                <i class="fas fa-star item-stats__star"></i>
-                                <span class="item-stats__stars-count">8.4</span>
-                            </div>
-                            <div class="flex user-details">
-                                <p class="user-name">User</p>
-                                <img src="/public/img/avatars/avatar1.jpg" alt="avatar" class="user-profile">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex user-activity-item">
-                        <img src="/public/img/posters/avengers.jpg" alt="poster" class="user-activity-item__poster">
-                        <div class="grid item-details">
-                            <h3 class="item-details__title">Title</h3>
-                            <span class="item-details__item-type color-movie">Type</span>
-                            <div class="flex item-stats">
-                                <i class="fas fa-star item-stats__star"></i>
-                                <span class="item-stats__stars-count">8.4</span>
-                            </div>
-                            <div class="flex user-details">
-                                <p class="user-name">User</p>
-                                <img src="/public/img/avatars/avatar1.jpg" alt="avatar" class="user-profile">
+                    <?php foreach (($reviews ?? []) as $review): ?>
+                        <div class="flex user-activity-item">
+                            <img src="/public/img/<?php echo $review['production_image'] ?>" alt="poster" class="user-activity-item__poster">
+                            <div class="grid item-details">
+                                <h3 class="item-details__title"><?php echo $review['title'] ?></h3>
+                                <span class="item-details__item-type color-<?php echo $review['type'] ?>"><?php echo $review['type'] ?></span>
+                                <div class="flex item-stats">
+                                    <i class="fas fa-star item-stats__star"></i>
+                                    <span class="item-stats__stars-count"><?php echo $review['mark'] ?></span>
+                                </div>
+                                <div class="flex user-details">
+                                    <p class="user-name"><?php echo $review['username'] ?></p>
+                                    <p><?php echo $review['review'] ?></p>
+                                    <img src="/public/img/<?php echo $review['user_image'] ?>" alt="avatar" class="user-profile">
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
 
@@ -67,37 +55,39 @@
                 <h2 class="section__title">Random users</h2>
                 <div class="section__horizontal-line"></div>
                 <div class="grid random-users-grid">
-                    <div class="flex random-user-item">
-                        <img src="/public/img/avatars/avatar1.jpg" alt="avatar" class="random__user-profile">
-                        <div class="grid random-user-details">
-                            <p class="random__user-name">User</p>
-                            <div class="flex stat-item">
-                                <i class="fas fa-star stat-item__star"></i>
-                                <span class="stat-item__number">152</span>
-                            </div>
-                            <div class="flex stat-item">
-                                <i class="fas fa-user-plus stat-item__user-plus"></i>
-                                <span class="stat-item__number">234</span>
-                            </div>
-                            <span class="random-user__vertical-line"></span>
-                            <div class="flex stat-item">
-                                <div class="circle color-movie"></div>
-                                <span class="stat-item__number">255</span>
-                            </div>
-                            <div class="flex stat-item">
-                                <div class="circle color-show"></div>
-                                <span class="stat-item__number">255</span>
-                            </div>
-                            <div class="flex stat-item">
-                                <div class="circle color-game"></div>
-                                <span class="stat-item__number">255</span>
-                            </div>
-                            <div class="flex stat-item">
-                                <div class="circle color-anime"></div>
-                                <span class="stat-item__number">255</span>
+                    <?php foreach (($randomUsers ?? []) as $randomUser): ?>
+                        <div class="flex random-user-item">
+                            <img src="/public/img/<?php echo $randomUser['image_src'] ?>" alt="avatar" class="random__user-profile">
+                            <div class="grid random-user-details">
+                                <p class="random__user-name"><?php echo $randomUser['username'] ?></p>
+                                <div class="flex stat-item">
+                                    <i class="fas fa-star stat-item__star"></i>
+                                    <span class="stat-item__number"><?php echo $randomUser['reviews'] ?></span>
+                                </div>
+                                <div class="flex stat-item">
+                                    <i class="fas fa-user-plus stat-item__user-plus"></i>
+                                    <span class="stat-item__number"><?php echo $randomUser['followers'] ?></span>
+                                </div>
+                                <span class="random-user__vertical-line"></span>
+                                <div class="flex stat-item">
+                                    <div class="circle color-movie"></div>
+                                    <span class="stat-item__number"><?php echo $randomUser['movies'] ?></span>
+                                </div>
+                                <div class="flex stat-item">
+                                    <div class="circle color-show"></div>
+                                    <span class="stat-item__number"><?php echo $randomUser['shows'] ?></span>
+                                </div>
+                                <div class="flex stat-item">
+                                    <div class="circle color-game"></div>
+                                    <span class="stat-item__number"><?php echo $randomUser['games'] ?></span>
+                                </div>
+                                <div class="flex stat-item">
+                                    <div class="circle color-anime"></div>
+                                    <span class="stat-item__number"><?php echo $randomUser['animes'] ?></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
 
@@ -105,20 +95,22 @@
                 <h2 class="section__title">Trending</h2>
                 <div class="section__horizontal-line"></div>
                 <div class="grid trending-grid">
-                    <div class="trending-grid-item">
-                        <img src="/public/img/posters/mandalorian.jpg" alt="poster" class="trending-grid-item__poster">
-                        <div class="trending-item-details">
-                            <h3 class="trending-item-details__title">Title</h3>
-                            <div class="flex item-stats">
-                                <span class="item-details__item-type color-show">Type</span>
-                                <i class="fas fa-star item-stats__star"></i>
-                                <span class="item-stats__stars-count">8.4</span>
-                                <span class="item-stats__vertical-line">|</span>
-                                <i class="fas fa-heart item-stats__heart"></i>
-                                <span class="item-stats__hearts-count">234</span>
+                    <?php foreach (($trendingProds ?? []) as $production): ?>
+                        <div class="trending-grid-item">
+                            <img src="/public/img/<?php echo $production->getImageSrc() ?>" alt="poster" class="trending-grid-item__poster">
+                            <div class="trending-item-details">
+                                <h3 class="trending-item-details__title"><?php echo $production->getTitle() ?></h3>
+                                <div class="flex item-stats">
+                                    <span class="item-details__item-type color-<?php echo $production->getType() ?>"><?php echo $production->getType() ?></span>
+                                    <i class="fas fa-star item-stats__star"></i>
+                                    <span class="item-stats__stars-count"><?php echo $production->getMark() ?></span>
+                                    <span class="item-stats__vertical-line">|</span>
+                                    <i class="fas fa-heart item-stats__heart"></i>
+                                    <span class="item-stats__hearts-count"><?php echo $production->getHeartsCount() ?></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
 

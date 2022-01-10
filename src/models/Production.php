@@ -6,16 +6,23 @@ class Production {
     private string $title;
     private string $synopsis;
     private string $date_produced;
-    private ProductionType $type;
+    private string $type;
     private string $id_poster;
 
-    public function __construct(string $id, string $title, string $synopsis, string $date_produced, ProductionType $type, string $id_poster) {
+    private float $mark;
+    private int $heartsCount;
+    private string $image_src;
+
+    public function __construct(string $id, string $title, string $synopsis, string $date_produced, string $type, string $id_poster, float $mark, int $heartsCount, string $image_src) {
         $this->id = $id;
         $this->title = $title;
         $this->synopsis = $synopsis;
         $this->date_produced = $date_produced;
         $this->type = $type;
         $this->id_poster = $id_poster;
+        $this->mark = $mark;
+        $this->heartsCount = $heartsCount;
+        $this->image_src = $image_src;
     }
 
     public function getId(): string {
@@ -34,11 +41,23 @@ class Production {
         return $this->date_produced;
     }
 
-    public function getType(): ProductionType {
+    public function getType(): string {
         return $this->type;
     }
 
     public function getIdPoster(): string {
         return $this->id_poster;
+    }
+
+    public function getMark(): string {
+        return $this->mark;
+    }
+
+    public function getHeartsCount(): string {
+        return $this->heartsCount;
+    }
+
+    public function getImageSrc(): string {
+        return $this->image_src;
     }
 }

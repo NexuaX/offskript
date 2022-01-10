@@ -6,10 +6,37 @@ require_once __DIR__ . "/../exceptions/EmailAlreadyUsedException.php";
 
 class UserRepository extends Repository {
 
-    public function getUser(string $email): ?User {
+    public function getUser(string $id): ?User {
 
         $stmn = $this->database->connect()->prepare("
-            SELECT * FROM public.user_accounts WHERE email = :email
+            SELECT ua.*, a.image_src FROM user_accounts ua left outer join attachments a on a.id = ua.id_avatar WHERE ua.id = :id
+        ");
+        $stmn->bindParam(":id", $id, PDO::PARAM_STR);
+        $stmn->execute();
+
+        $user = $stmn->fetch(PDO::FETCH_ASSOC);
+
+        if ($user == false) {
+            throw new UserNotFoundException();
+        }
+
+        return new User(
+            $user["id"],
+            $user["email"],
+            $user["password"],
+            $user["username"],
+            $user["description"] ?: "",
+            $user["date_last_login"] ?: "",
+            $user["id_avatar"] ?: "",
+            $user["status"] ?: "",
+            $user["image_src"] ?: "avatars/default.jpg",
+        );
+    }
+
+    public function getUserByEmail(string $email): ?User {
+
+        $stmn = $this->database->connect()->prepare("
+            SELECT ua.*, a.image_src FROM user_accounts ua left outer join attachments a on a.id = ua.id_avatar WHERE ua.email = :email
         ");
         $stmn->bindParam(":email", $email, PDO::PARAM_STR);
         $stmn->execute();
@@ -28,7 +55,8 @@ class UserRepository extends Repository {
             $user["description"] ?: "",
             $user["date_last_login"] ?: "",
             $user["id_avatar"] ?: "",
-            $user["status"] ?: ""
+            $user["status"] ?: "",
+            $user["image_src"] ?: "avatars/default.jpg",
         );
     }
 
@@ -57,5 +85,39 @@ class UserRepository extends Repository {
         } else {
             throw new SQLExecuteException();
         }
+    }
+
+    public function getRandomUsers(string $id = "0"): array {
+
+        $stmn = $this->database->connect()->prepare("
+            select us.*, ua.username, coalesce(a.image_src, 'avatars/default.jpg') as image_src from user_stats us
+            left join user_accounts ua on us.id = ua.id
+            left join attachments a on a.id = ua.id_avatar
+            where us.id not in (select id_following_user from follows where id_followed_user = $id ) and us.id != $id
+            order by random() limit 5;
+        ");
+        $stmn->execute();
+
+        $rows = $stmn->fetchAll(PDO::FETCH_ASSOC);
+
+        return $rows;
+    }
+
+    public function followUser(string $followingUserId, string $followedUserId) {
+
+        $stmn = $this->database->connect()->prepare("
+            insert into follows 
+            values (DEFAULT, $followingUserId, $followedUserId)
+        ");
+        $stmn->execute();
+    }
+
+    public function unfollowUser(string $followingUserId, string $followedUserId) {
+
+        $stmn = $this->database->connect()->prepare("
+            delete from follows 
+            where id_following_user = $followingUserId and id_followed_user = $followedUserId
+        ");
+        $stmn->execute();
     }
 }
