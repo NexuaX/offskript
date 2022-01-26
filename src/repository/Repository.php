@@ -12,7 +12,7 @@ class Repository {
         $this->database = new Database();
     }
 
-    public static function getInstance(): Repository {
+    public static function getInstance(): static {
         $cls = static::class;
         if (!isset(self::$instances[$cls])) {
             self::$instances[$cls] = new static();
