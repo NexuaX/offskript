@@ -9,6 +9,8 @@
     <?php
     include "commons/links.php";
     include "commons/scripts.php"; ?>
+    <script src="/public/js/toplist_loader.js" defer></script>
+    <script src="/public/js/profile_content_loader.js" defer></script>
     <link rel="stylesheet" href="/public/css/profile.css">
 </head>
 <body data-navigation-visible="false">
@@ -57,23 +59,7 @@
             <h2 class="section__title">User activity</h2>
             <div class="section__horizontal-line"></div>
             <div class="grid user-activity-grid">
-                <?php foreach (($userReviews ?? []) as $review): ?>
-                    <div class="flex user-activity-item">
-                        <img src="/public/img/<?php echo $review['image_src'] ?>" alt="poster" class="user-activity-item__poster">
-                        <div class="grid item-details">
-                            <h3 class="item-details__title"><?php echo $review['title'] ?></h3>
-                            <span class="item-details__item-type color-<?php echo $review['type'] ?>"><?php echo $review['type'] ?></span>
-                            <div class="flex item-stats">
-                                <i class="fas fa-star item-stats__star"></i>
-                                <span class="item-stats__stars-count"><?php echo $review['mark'] ?></span>
-                            </div>
-                            <div class="flex user-details">
-                                <p class="user-name"><?php echo $review['review'] ?></p>
-                                <img src="/public/img/avatars/avatar1.jpg" alt="avatar" class="user-profile">
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+
             </div>
         </section>
 
@@ -81,39 +67,7 @@
             <h2 class="section__title">Other users</h2>
             <div class="section__horizontal-line"></div>
             <div class="grid random-users-grid">
-                <?php foreach (($randomUsers ?? []) as $randomUser): ?>
-                    <div class="flex random-user-item">
-                        <img src="/public/img/<?php echo $randomUser['image_src'] ?>" alt="avatar" class="random__user-profile">
-                        <div class="grid random-user-details">
-                            <p class="random__user-name"><?php echo $randomUser['username'] ?></p>
-                            <div class="flex stat-item">
-                                <i class="fas fa-star stat-item__star"></i>
-                                <span class="stat-item__number"><?php echo $randomUser['reviews'] ?></span>
-                            </div>
-                            <div class="flex stat-item">
-                                <i class="fas fa-user-plus stat-item__user-plus"></i>
-                                <span class="stat-item__number"><?php echo $randomUser['followers'] ?></span>
-                            </div>
-                            <span class="random-user__vertical-line"></span>
-                            <div class="flex stat-item">
-                                <div class="circle color-movie"></div>
-                                <span class="stat-item__number"><?php echo $randomUser['movies'] ?></span>
-                            </div>
-                            <div class="flex stat-item">
-                                <div class="circle color-show"></div>
-                                <span class="stat-item__number"><?php echo $randomUser['shows'] ?></span>
-                            </div>
-                            <div class="flex stat-item">
-                                <div class="circle color-game"></div>
-                                <span class="stat-item__number"><?php echo $randomUser['games'] ?></span>
-                            </div>
-                            <div class="flex stat-item">
-                                <div class="circle color-anime"></div>
-                                <span class="stat-item__number"><?php echo $randomUser['animes'] ?></span>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+
             </div>
         </section>
 
@@ -121,13 +75,13 @@
             <h2 class="section__title">Favorites</h2>
             <div class="section__horizontal-line"></div>
             <div class="grid favorite-grid">
-                <div class="favorite-grid-item">
-                    <img src="/public/img/2206017995.jpg" alt="poster" class="favorite-grid-item__poster">
-                    <div class="favorite-item-details">
-                        <h3 class="favorite-item-details__title">Name</h3>
-                        <p class="favorite-item-details__description">Description</p>
-                    </div>
-                </div>
+
+            </div>
+        </section>
+
+        <section class="section section--top-list">
+            <div class="grid top-lists">
+
             </div>
         </section>
     </main>
@@ -137,3 +91,84 @@
 </div>
 </body>
 </html>
+
+<?php include "commons/loader.php"; ?>
+
+<template id="user-activity-item">
+    <div class="flex user-activity-item">
+        <img src="" alt="poster" class="user-activity-item__poster">
+        <div class="grid item-details">
+            <h3 class="item-details__title"></h3>
+            <span class="item-details__item-type"></span>
+            <div class="flex item-stats">
+                <i class="fas fa-star item-stats__star"></i>
+                <span class="item-stats__stars-count"></span>
+            </div>
+            <p class="item-details__user-review"></p>
+        </div>
+    </div>
+</template>
+
+<template id="random-user-item">
+    <div class="flex random-user-item">
+        <img src="" alt="avatar" class="random__user-profile">
+        <div class="grid random-user-details">
+            <p class="random__user-name"></p>
+            <div class="flex stat-item">
+                <i class="fas fa-star stat-item__star"></i>
+                <span class="stat-item__number random__stars-count"></span>
+            </div>
+            <div class="flex stat-item">
+                <i class="fas fa-user-plus stat-item__user-plus"></i>
+                <span class="stat-item__number random__followers-count"></span>
+            </div>
+            <span class="random-user__vertical-line"></span>
+            <div class="flex stat-item">
+                <div class="circle color-movie"></div>
+                <span class="stat-item__number random__movies-count"></span>
+            </div>
+            <div class="flex stat-item">
+                <div class="circle color-show"></div>
+                <span class="stat-item__number random__shows-count"></span>
+            </div>
+            <div class="flex stat-item">
+                <div class="circle color-game"></div>
+                <span class="stat-item__number random__games-count"></span>
+            </div>
+            <div class="flex stat-item">
+                <div class="circle color-anime"></div>
+                <span class="stat-item__number random__animes-count"></span>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="favorite-item">
+    <div class="favorite-grid-item">
+        <img src="" alt="poster" class="favorite-grid-item__poster">
+        <div class="favorite-item-details">
+            <h3 class="favorite-item-details__title"></h3>
+            <p class="favorite-item-details__description"></p>
+        </div>
+    </div>
+</template>
+
+<template id="top-list">
+    <div class="top-list">
+        <h3 class="top-list__title"></h3>
+        <div class="grid top-list__body">
+
+        </div>
+    </div>
+</template>
+
+<template id="top-list-item">
+    <a href="" class="grid top-list-link">
+        <span class="top-list__number"></span>
+        <div class="top-list__data"></div>
+        <div class="top-list-stat">
+            <i class="fas fa-star top-list__star"></i>
+            <span class="top-list__stars-count"></span>
+        </div>
+    </a>
+</template>

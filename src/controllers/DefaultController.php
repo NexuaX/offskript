@@ -14,25 +14,11 @@ class DefaultController extends AppController {
     private Repository $watchlistRepository;
 
     public function index() {
-        $this->newsRepository = NewsRepository::getInstance();
-        $this->productionRepository = ProductionRepository::getInstance();
-
-        $this->render('index', [
-            "news" => $this->newsRepository->getNews(),
-            "topMovies" => $this->productionRepository->getTopMovies(),
-            "topShows" => $this->productionRepository->getTopShows(),
-            "topAnimes" => $this->productionRepository->getTopAnimes(),
-            "topGames" => $this->productionRepository->getTopGames()]);
+        $this->render('index');
     }
 
     public function explorer(array $params = []) {
-        $this->productionRepository = ProductionRepository::getInstance();
-
-        $this->render('explorer', [
-            "movies" => $this->productionRepository->getDefaultMovies(),
-            "shows" => $this->productionRepository->getDefaultShows(),
-            "animes" => $this->productionRepository->getDefaultAnimes(),
-            "games" => $this->productionRepository->getDefaultGames()]);
+        $this->render('explorer');
     }
 
     public function social(array $params = []) {

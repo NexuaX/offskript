@@ -37,16 +37,10 @@ class ProfileController extends AppController {
         }
 
         $userStats = $this->watchlistRepository->getUserStats($userId);
-        $userReviews = $this->watchlistRepository->getUserReviews($userId);
-        $randomUsers = $this->userRepository->getRandomUsers($userId);
-        $toplists = $this->watchlistRepository->getUserToplist($userId);
 
         $this->render('profile', [
             "user" => $user,
             "userStats" => $userStats,
-            "userReviews" => $userReviews,
-            "randomUsers" => $randomUsers,
-            "toplists" => $toplists,
             "loggedUserProfile" => $userId == CookieSession::getUserCookie()]);
     }
 

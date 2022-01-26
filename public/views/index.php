@@ -10,6 +10,8 @@
         include "commons/links.php";
         include "commons/scripts.php"; ?>
     <link rel="stylesheet" href="/public/css/index.css">
+    <script src="/public/js/toplist_loader.js" defer></script>
+    <script src="/public/js/news_loader.js" defer></script>
 </head>
 <body data-navigation-visible="false">
 
@@ -44,40 +46,12 @@
                 <h2 class="section__title">Latest news</h2>
                 <div class="section__horizontal-line"></div>
                 <div class="grid news">
-                    <?php
-                    if (isset($news)):
-                        foreach ($news as $newsitem): ?>
-                            <div class="news-item">
-                                <img src="/public/img/<?php echo $newsitem->getImageSrc(); ?>" alt="news-item__image" class="news-item__image">
-                                <h3 class="news-item__title"><?php echo $newsitem->getTitle(); ?></h3>
-                            </div>
-                    <?php
-                        endforeach;
-                    endif; ?>
+
                 </div>
             </section>
             <section class="section section--top-list">
                 <div class="grid top-lists">
-                    <?php if (isset($topMovies)): ?>
-                        <div class="top-list">
-                            <h3 class="top-list__title">TOP MOVIES</h3>
-                            <div class="grid top-list__body">
-                            <?php foreach ($topMovies as $key => $movie): ?>
-                                <span class="top-list__number">#<?php echo $key; ?></span>
-                                <div class="top-list__data"><?php echo $movie->getTitle(); ?></div>
-                            <?php endforeach; ?>
-                            </div>
-                        </div>
-                    <?php endif; ?>
-                    <?php if (isset($topShows)): ?>
-                        <div class="top-list">
-                            <h3 class="top-list__title">TOP SHOWS</h3>
-                            <?php foreach ($topShows as $key => $show): ?>
-                                <span class="top-list__number">#<?php echo $key; ?></span>
-                                <div class="top-list__data"><?php echo $show->getTitle(); ?></div>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
+
                 </div>
             </section>
         </main>
@@ -87,3 +61,32 @@
     </div>
 </body>
 </html>
+
+<?php include "commons/loader.php"; ?>
+
+<template id="news-item">
+    <div class="news-item">
+        <img src="" alt="news-item__image" class="news-item__image">
+        <h3 class="news-item__title"></h3>
+    </div>
+</template>
+
+<template id="top-list">
+    <div class="top-list">
+        <h3 class="top-list__title"></h3>
+        <div class="grid top-list__body">
+
+        </div>
+    </div>
+</template>
+
+<template id="top-list-item">
+    <a href="" class="grid top-list-link">
+        <span class="top-list__number"></span>
+        <div class="top-list__data"></div>
+        <div class="top-list-stat">
+            <i class="fas fa-star top-list__star"></i>
+            <span class="top-list__stars-count"></span>
+        </div>
+    </a>
+</template>
