@@ -5,9 +5,11 @@ require_once __DIR__."/../../CookieSession.php";
 class AppController {
 
     private string $request;
+    private string $contentType;
 
     public function __construct() {
         $this->request = $_SERVER['REQUEST_METHOD'];
+        $this->contentType = $_SERVER['CONTENT_TYPE'];
     }
 
     protected function isGet(): bool {
@@ -16,6 +18,10 @@ class AppController {
 
     protected function isPost(): bool {
         return $this->request === 'POST';
+    }
+
+    protected function isJsonType(): bool {
+        return $this->contentType === 'application/json';
     }
 
     protected function render(string $template = null, array $variables = []) {

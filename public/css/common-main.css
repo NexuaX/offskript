@@ -167,3 +167,22 @@
 @media (min-width: 1200px) {
 
 }
+
+.loading {
+    margin: 100px auto;
+    height: 70px;
+    width: 70px;
+    border: 5px solid var(--hex-jet);
+    border-bottom-color: var(--hex-cinnabar);
+    border-radius: 50%;
+    animation: turn 1s infinite linear;
+}
+
+@keyframes turn {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
