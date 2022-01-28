@@ -87,6 +87,16 @@ class UserRepository extends Repository {
         }
     }
 
+    public function editUser(string $userId, string $username, string $description, string $attachmentId) {
+
+        $stmn = $this->database->connect()->prepare("
+            update user_accounts 
+            set username = '$username', description = '$description', id_avatar = $attachmentId
+            where id = $userId
+        ");
+        $stmn->execute();
+    }
+
     public function getRandomUsers(string $id = "0"): array {
 
         $stmn = $this->database->connect()->prepare("
@@ -101,6 +111,16 @@ class UserRepository extends Repository {
         $rows = $stmn->fetchAll(PDO::FETCH_ASSOC);
 
         return $rows;
+    }
+
+    public function isFollowedByUser(string $userId, string $userIdToCheck) {
+
+        $stmn = $this->database->connect()->prepare("
+            select * from follows where id_following_user = $userId and id_followed_user = $userIdToCheck
+        ");
+        $stmn->execute();
+
+        return $stmn->rowCount();
     }
 
     public function followUser(string $followingUserId, string $followedUserId) {

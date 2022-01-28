@@ -13,6 +13,7 @@ Router::get('production', 'ProductionController');
 Router::post('login', 'SecurityController');
 Router::post('register', 'SecurityController');
 Router::get('logout', 'SecurityController');
+Router::post('changeUserData', 'ProfileController');
 
 // API CALLS
 Router::get("explorerSearch", "ApiController");
@@ -30,5 +31,7 @@ Router::get("getUserReviews", "ApiController");
 Router::get("getRandomUsers", "ApiController");
 Router::get("getUserFavorites", "ApiController");
 Router::get("getUserTopList", "ApiController");
+Router::get("followUser", "ApiController");
+Router::get("unfollowUser", "ApiController");
 
 Router::run($path);

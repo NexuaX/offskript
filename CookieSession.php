@@ -7,7 +7,7 @@ class CookieSession {
     const DEFAULT_TIME = 600;
 
     public static function createCookie(string $name, string $value, int $expires = 0) {
-        setcookie($name, $value, $expires);
+        setcookie($name, $value, $expires, "/");
     }
 
     public static function deleteCookie(string $name) {

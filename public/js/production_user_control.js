@@ -90,17 +90,3 @@ noPlanButton?.addEventListener("click", () => {
 
     fetchThenReload("/removeFromUserWatchList", data);
 });
-
-function fetchThenReload(endpoint, data) {
-    fetch(endpoint, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    }).then(() => {
-        setTimeout(() => {
-            location.reload();
-        }, 2000);
-    });
-}

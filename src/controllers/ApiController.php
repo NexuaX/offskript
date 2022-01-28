@@ -211,6 +211,34 @@ class ApiController extends AppController {
         }
     }
 
+    public function followUser() {
+
+        $this->userRepository = UserRepository::getInstance();
+
+        if ($this->isJsonType()) {
+            $decoded = $this->decodeDataFromInput();
+            $this->setHeaderAndCode();
+
+            $userId = CookieSession::getUserCookie();
+            $this->userRepository->followUser($userId, $decoded["followedUserId"]);
+            echo json_encode("ok");
+        }
+    }
+
+    public function unfollowUser() {
+
+        $this->userRepository = UserRepository::getInstance();
+
+        if ($this->isJsonType()) {
+            $decoded = $this->decodeDataFromInput();
+            $this->setHeaderAndCode();
+
+            $userId = CookieSession::getUserCookie();
+            echo $userId;
+            $this->userRepository->unfollowUser($userId, $decoded["followedUserId"]);
+            echo json_encode("ok");
+        }
+    }
 
     private function setHeaderAndCode() {
         header("Content-Type: application/json");
