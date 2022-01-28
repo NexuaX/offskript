@@ -4,8 +4,6 @@ async function placeTopLists(endpoint = "/globalTopList") {
     placeLoader(topListsSection);
     const data = await fetchFromEndpoint(endpoint);
 
-    console.log(data);
-
     const template = document.querySelector("template#top-list");
 
     topListsSection.innerHTML = "";

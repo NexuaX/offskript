@@ -84,6 +84,7 @@ class WatchlistRepository extends Repository {
 
         foreach ($rows as $row) {
             $data[] = array(
+                "id_production" => $row["id_production"],
                 "mark" => $row["mark"],
                 "review" => $row["review"],
                 "heart" => $row["heart"],
@@ -190,7 +191,7 @@ class WatchlistRepository extends Repository {
             select uw.*, p.title from user_watchlist uw
             left join productions p on p.id = uw.id_production
             where id_user = $userId and type = '$type'
-            order by type, mark desc limit 5
+            order by type, mark desc nulls last limit 5
         ");
         $stmn->execute();
 

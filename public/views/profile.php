@@ -11,6 +11,8 @@
     include "commons/scripts.php"; ?>
     <script src="/public/js/toplist_loader.js" defer></script>
     <script src="/public/js/profile_content_loader.js" defer></script>
+    <script src="/public/js/profile_gradient_calculator.js" defer></script>
+    <script src="/public/js/profile_customization.js" defer></script>
     <link rel="stylesheet" href="/public/css/profile.css">
 </head>
 <body data-navigation-visible="false">
@@ -46,11 +48,50 @@
                         <span class="stat-item__number"><?php echo $userStats["followers"]; ?> followers</span>
                     </div>
                 </div>
-                <div class="share-profile-button">
-                    Share profile
+                <?php if (!($loggedUserProfile ?? false)): ?>
+                    <?php if (!($isFollowedUser ?? false)): ?>
+                        <div class="profile-button follow-profile-button" data-id="<?php echo $user->getId(); ?>">
+                            <i class="fas fa-user-plus"></i> Follow profile
+                        </div>
+                    <?php else: ?>
+                        <div class="profile-button unfollow-profile-button" data-id="<?php echo $user->getId(); ?>">
+                            <i class="fas fa-user-minus"></i> Unfollow profile
+                        </div>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <div class="profile-button edit-profile-button">
+                        <i class="fas fa-edit"></i> Edit profile
+                    </div>
+                <?php endif; ?>
+                <div class="profile-button share-profile-button" data-id="<?php echo $user->getId(); ?>">
+                    <i class="fas fa-share-alt"></i> Share profile
+                </div>
+            </div>
+
+            <div class="profile-editor-wrapper" data-visible="false">
+                <div class="profile-editor">
+                    <div class="close-icon">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <?php if (isset($_GET["message"])): ?>
+                        <div class="message">
+                            <?php echo $_GET["message"]; ?>
+                        </div>
+                    <?php endif; ?>
+                    <form method="POST" action="changeUserData" enctype="multipart/form-data">
+                        <h3 class="input-label">Change avatar picture:</h3>
+                        <input class="avatar-input" name="avatar" type="file" accept="image/png, image/jpeg">
+                        <h3 class="input-label">Change username:</h3>
+                        <input class="username-input" name="username" type="text" value="<?php echo $user->getUsername(); ?>">
+                        <h3 class="input-label">Change description:</h3>
+                        <textarea rows="3" class="user-description-input" name="description"><?php echo $user->getDescription(); ?></textarea>
+                        <button class="save-button" type="submit"><i class="fas fa-check-circle"></i> Save</button>
+                        <button class="cancel-button" type="reset"><i class="fas fa-times-circle"></i> Cancel</button>
+                    </form>
                 </div>
             </div>
         <?php endif; ?>
+
 
     </div>
 
@@ -78,13 +119,13 @@
 
             </div>
         </section>
-
-        <section class="section section--top-list">
-            <div class="grid top-lists">
-
-            </div>
-        </section>
     </main>
+
+    <section class="section section--top-list">
+        <div class="grid top-lists">
+
+        </div>
+    </section>
 
     <?php include "commons/footer.php"; ?>
 
@@ -98,7 +139,9 @@
     <div class="flex user-activity-item">
         <img src="" alt="poster" class="user-activity-item__poster">
         <div class="grid item-details">
-            <h3 class="item-details__title"></h3>
+            <a href="" class="item-details__link">
+                <h3 class="item-details__title"></h3>
+            </a>
             <span class="item-details__item-type"></span>
             <div class="flex item-stats">
                 <i class="fas fa-star item-stats__star"></i>
@@ -113,7 +156,9 @@
     <div class="flex random-user-item">
         <img src="" alt="avatar" class="random__user-profile">
         <div class="grid random-user-details">
-            <p class="random__user-name"></p>
+            <a href="" class="random__user-link">
+                <p class="random__user-name"></p>
+            </a>
             <div class="flex stat-item">
                 <i class="fas fa-star stat-item__star"></i>
                 <span class="stat-item__number random__stars-count"></span>
@@ -147,7 +192,7 @@
     <div class="favorite-grid-item">
         <img src="" alt="poster" class="favorite-grid-item__poster">
         <div class="favorite-item-details">
-            <h3 class="favorite-item-details__title"></h3>
+            <h4 class="favorite-item-details__title"></h4>
             <p class="favorite-item-details__description"></p>
         </div>
     </div>
