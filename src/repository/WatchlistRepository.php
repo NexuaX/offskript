@@ -22,7 +22,7 @@ class WatchlistRepository extends Repository {
         return $this->mapToArray($rows);
     }
 
-    public function getOtherUsersReviewsOnProduction(string $prodId, string $userId = ""): array {
+    public function getOtherUsersReviewsOnProduction(string $prodId, string $userId = "0"): array {
 
         $stmn = $this->database->connect()->prepare("
             select uw.*, ua.username, coalesce(a2.image_src, 'avatars/default.jpg') as user_image, p.title, p.type, a.image_src as production_image from user_watchlist uw 
@@ -168,6 +168,7 @@ class WatchlistRepository extends Repository {
 
         foreach ($rows as $row) {
             $data[] = array(
+                "id_production" => $row["id_production"],
                 "mark" => $row["mark"],
                 "review" => $row["review"],
                 "heart" => $row["heart"],

@@ -34,15 +34,21 @@
                         <div class="flex user-activity-item">
                             <img src="/public/img/<?php echo $review['production_image'] ?>" alt="poster" class="user-activity-item__poster">
                             <div class="grid item-details">
-                                <h3 class="item-details__title"><?php echo $review['title'] ?></h3>
+                                <a href="/production/<?php echo $review["id_production"]; ?>" class="item-details__link">
+                                    <h3 class="item-details__title"><?php echo $review['title'] ?></h3>
+                                </a>
                                 <span class="item-details__item-type color-<?php echo $review['type'] ?>"><?php echo $review['type'] ?></span>
                                 <div class="flex item-stats">
                                     <i class="fas fa-star item-stats__star"></i>
                                     <span class="item-stats__stars-count"><?php echo $review['mark'] ?></span>
                                 </div>
                                 <div class="flex user-details">
-                                    <p class="user-name"><?php echo $review['username'] ?></p>
-                                    <p><?php echo $review['review'] ?></p>
+                                    <div>
+                                        <a href="<?php echo $review["id_user"]; ?>" class="user-details__link">
+                                            <p class="user-name"><?php echo $review['username'] ?></p>
+                                        </a>
+                                        <p class="user-review"><?php echo $review['review'] ?></p>
+                                    </div>
                                     <img src="/public/img/<?php echo $review['user_image'] ?>" alt="avatar" class="user-profile">
                                 </div>
                             </div>
@@ -59,7 +65,9 @@
                         <div class="flex random-user-item">
                             <img src="/public/img/<?php echo $randomUser['image_src'] ?>" alt="avatar" class="random__user-profile">
                             <div class="grid random-user-details">
-                                <p class="random__user-name"><?php echo $randomUser['username'] ?></p>
+                                <a href="/profile/<?php echo $randomUser["id"] ?>" class="random__user-link">
+                                    <p class="random__user-name"><?php echo $randomUser['username'] ?></p>
+                                </a>
                                 <div class="flex stat-item">
                                     <i class="fas fa-star stat-item__star"></i>
                                     <span class="stat-item__number"><?php echo $randomUser['reviews'] ?></span>
@@ -96,20 +104,22 @@
                 <div class="section__horizontal-line"></div>
                 <div class="grid trending-grid">
                     <?php foreach (($trendingProds ?? []) as $production): ?>
-                        <div class="trending-grid-item">
-                            <img src="/public/img/<?php echo $production->getImageSrc() ?>" alt="poster" class="trending-grid-item__poster">
-                            <div class="trending-item-details">
-                                <h3 class="trending-item-details__title"><?php echo $production->getTitle() ?></h3>
-                                <div class="flex item-stats">
-                                    <span class="item-details__item-type color-<?php echo $production->getType() ?>"><?php echo $production->getType() ?></span>
-                                    <i class="fas fa-star item-stats__star"></i>
-                                    <span class="item-stats__stars-count"><?php echo $production->getMark() ?></span>
-                                    <span class="item-stats__vertical-line">|</span>
-                                    <i class="fas fa-heart item-stats__heart"></i>
-                                    <span class="item-stats__hearts-count"><?php echo $production->getHeartsCount() ?></span>
+                        <a href="/production/<?php echo $production->getId(); ?>" class="trending-grid-item__link">
+                            <div class="trending-grid-item">
+                                <img src="/public/img/<?php echo $production->getImageSrc() ?>" alt="poster" class="trending-grid-item__poster">
+                                <div class="trending-item-details">
+                                    <h3 class="trending-item-details__title"><?php echo $production->getTitle() ?></h3>
+                                    <div class="flex item-stats">
+                                        <span class="item-details__item-type color-<?php echo $production->getType() ?>"><?php echo $production->getType() ?></span>
+                                        <i class="fas fa-star item-stats__star"></i>
+                                        <span class="item-stats__stars-count"><?php echo $production->getMark() ?></span>
+                                        <span class="item-stats__vertical-line">|</span>
+                                        <i class="fas fa-heart item-stats__heart"></i>
+                                        <span class="item-stats__hearts-count"><?php echo $production->getHeartsCount() ?></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     <?php endforeach; ?>
                 </div>
             </section>
