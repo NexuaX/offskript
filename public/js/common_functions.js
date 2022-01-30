@@ -30,7 +30,7 @@ function fetchThenReload(endpoint, data) {
         console.log(response.text());
         setTimeout(() => {
             location.reload();
-        }, 100000);
+        }, 1000);
     });
 }
 

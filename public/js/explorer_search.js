@@ -98,7 +98,7 @@ function createSectionItem(item, node) {
     link.href = "/production/" + item.id;
 
     const img = clone.querySelector("img.explorer-grid-item__poster");
-    img.src = "/public/img/" + item.image_src ?? "posters/default";
+    img.src = "/public/img/" + (item.image_src ?? "posters/default.jpg");
 
     const title = clone.querySelector(".item-details__title");
     title.innerHTML = item.title;

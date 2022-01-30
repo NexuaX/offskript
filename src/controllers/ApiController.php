@@ -187,6 +187,18 @@ class ApiController extends AppController {
         }
     }
 
+    public function getFollowedUsers(array $params = []) {
+
+        $this->userRepository = UserRepository::getInstance();
+
+        if ($this->isJsonType()) {
+            $this->setHeaderAndCode();
+
+            $userId = $params[1] ?? CookieSession::getUserCookie();
+            echo json_encode($this->userRepository->getFollowedUsers($userId));
+        }
+    }
+
     public function getUserFavorites(array $params = []) {
 
         $this->favoriteRepository = FavoriteRepository::getInstance();

@@ -33,5 +33,6 @@ Router::get("getUserFavorites", "ApiController");
 Router::get("getUserTopList", "ApiController");
 Router::get("followUser", "ApiController");
 Router::get("unfollowUser", "ApiController");
+Router::get("getFollowedUsers", "ApiController");
 
 Router::run($path);

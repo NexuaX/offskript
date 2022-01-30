@@ -20,17 +20,7 @@ class UserRepository extends Repository {
             throw new UserNotFoundException();
         }
 
-        return new User(
-            $user["id"],
-            $user["email"],
-            $user["password"],
-            $user["username"],
-            $user["description"] ?: "",
-            $user["date_last_login"] ?: "",
-            $user["id_avatar"] ?: "",
-            $user["status"] ?: "",
-            $user["image_src"] ?: "avatars/default.jpg",
-        );
+        return $this->mapToObject($user);
     }
 
     public function getUserByEmail(string $email): ?User {
@@ -47,17 +37,7 @@ class UserRepository extends Repository {
             throw new UserNotFoundException();
         }
 
-        return new User(
-            $user["id"],
-            $user["email"],
-            $user["password"],
-            $user["username"],
-            $user["description"] ?: "",
-            $user["date_last_login"] ?: "",
-            $user["id_avatar"] ?: "",
-            $user["status"] ?: "",
-            $user["image_src"] ?: "avatars/default.jpg",
-        );
+        return $this->mapToObject($user);
     }
 
     public function addUser(string $email, string $password, string $username) {
@@ -113,6 +93,22 @@ class UserRepository extends Repository {
         return $rows;
     }
 
+    public function getFollowedUsers(string $userId) {
+
+        $stmn = $this->database->connect()->prepare("
+            select us.*, ua.username, coalesce(a.image_src, 'avatars/default.jpg') as image_src from user_stats us
+            left join user_accounts ua on us.id = ua.id
+            left join attachments a on a.id = ua.id_avatar
+            where us.id in (select id_followed_user from follows where id_following_user = $userId )
+            order by random() limit 5;
+        ");
+        $stmn->execute();
+
+        $rows = $stmn->fetchAll(PDO::FETCH_ASSOC);
+
+        return $rows;
+    }
+
     public function isFollowedByUser(string $userId, string $userIdToCheck) {
 
         $stmn = $this->database->connect()->prepare("
@@ -139,5 +135,19 @@ class UserRepository extends Repository {
             where id_following_user = $followingUserId and id_followed_user = $followedUserId
         ");
         $stmn->execute();
+    }
+
+    private function mapToObject(array $row): User {
+        return new User(
+            $row["id"],
+            $row["email"],
+            $row["password"],
+            $row["username"],
+            $row["description"] ?: "",
+            $row["date_last_login"] ?: "",
+            $row["id_avatar"] ?: "",
+            $row["status"] ?: "",
+            $row["image_src"] ?: "avatars/default.jpg",
+        );
     }
 }

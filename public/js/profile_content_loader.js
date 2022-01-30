@@ -39,7 +39,7 @@ function generateUserActivityItem(item) {
 
 async function placeRandomUsers() {
     placeLoader(randomUsersSection);
-    const endpoint = lastURLElement === "profile" ? "/getRandomUsers" : "/getRandomUsers/" + lastURLElement;
+    const endpoint = lastURLElement === "profile" ? "/getFollowedUsers" : "/getFollowedUsers/" + lastURLElement;
 
     const result = await fetchFromEndpoint(endpoint);
     randomUsersSection.innerHTML = "";

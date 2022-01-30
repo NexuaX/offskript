@@ -98,7 +98,7 @@ class ProductionRepository extends Repository {
             join production_studio ps on p.id = ps.id_production
             join studios s on s.id = ps.id_studio
             join attachments a on a.id = s.id_picture
-            where p.id = 14
+            where p.id = $id
         ");
         $stmn->execute();
 
