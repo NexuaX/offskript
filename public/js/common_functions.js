@@ -27,7 +27,6 @@ function fetchThenReload(endpoint, data) {
         },
         body: JSON.stringify(data)
     }).then((response) => {
-        console.log(response.text());
         setTimeout(() => {
             location.reload();
         }, 1000);

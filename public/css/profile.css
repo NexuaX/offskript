@@ -281,6 +281,7 @@
     flex-direction: column;
     padding: var(--padding);
     width: 100%;
+    max-width: 100vw;
 }
 .favorite-grid {
     grid-template-columns: calc(var(--width-min) / 2 - 20px);

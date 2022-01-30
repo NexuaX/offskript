@@ -189,7 +189,7 @@ class WatchlistRepository extends Repository {
         $result = array();
 
         $stmn = $this->database->connect()->prepare("
-            select uw.*, p.title from user_watchlist uw
+            select p.id, uw.mark, p.title from user_watchlist uw
             left join productions p on p.id = uw.id_production
             where id_user = $userId and type = '$type'
             order by type, mark desc nulls last limit 5

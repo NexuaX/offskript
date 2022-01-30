@@ -132,7 +132,7 @@ class ApiController extends AppController {
             $this->setHeaderAndCode();
 
             $userId = CookieSession::getUserCookie() == "" ? "0" : CookieSession::getUserCookie();
-            $this->favoriteRepository->addUserFavoriteDirector($userId, $decoded["entityId"]);
+            $this->favoriteRepository->addUserFavoriteWithType($userId, $decoded["entityId"], $decoded["type"]);
             echo json_encode("ok");
         }
     }

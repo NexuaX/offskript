@@ -17,8 +17,6 @@ async function placeProductionEntities() {
     };
     const result = await fetchFromEndpointWithData("/getProductionEntities", data);
 
-    console.log(result);
-
     prodEntitiesSection.innerHTML = "";
     result.directors.forEach((item) => {
         prodEntitiesSection.appendChild(generateProductionEntity("director", item));
@@ -40,7 +38,8 @@ function generateProductionEntity(type, item) {
     favorite?.setAttribute("data-selected", item.selected === 1);
     favorite?.addEventListener("click", async () => {
         const data = {
-            entityId: item.id
+            entityId: item.id,
+            type: type
         }
         const endpoint = item.selected === 1 ? "/removeEntityAsFavorite" : "/markEntityAsFavorite";
         const result = await fetchFromEndpointWithData(endpoint, data);

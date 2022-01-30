@@ -30,6 +30,10 @@ class FavoriteRepository extends Repository {
         $this->removeUserFavorite($userId, self::STUDIO, $entityId);
     }
 
+    public function addUserFavoriteWithType(string $userId, string $entityId, string $type) {
+        $this->addUserFavorite($userId, $type, $entityId);
+    }
+
     public function getUserFavorites(string $userId) {
 
         $stmn = $this->database->connect()->prepare("

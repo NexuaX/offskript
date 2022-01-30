@@ -14,7 +14,6 @@ class ProfileController extends AppController {
 
     private Repository $userRepository;
     private Repository $watchlistRepository;
-    private Repository $productionRepository;
     private Repository $attachmentsRepository;
 
     const MAX_FILE_SIZE = 512*1024;
@@ -33,7 +32,6 @@ class ProfileController extends AppController {
 
         $this->userRepository = UserRepository::getInstance();
         $this->watchlistRepository = WatchlistRepository::getInstance();
-        $this->productionRepository = ProductionRepository::getInstance();
 
         $user = null;
         $userId = $params[1] ?? CookieSession::getUserCookie();
@@ -73,7 +71,7 @@ class ProfileController extends AppController {
             header("Location: $url/profile");
         }
 
-        $attachmentId = $user->getIdAvatar() != "" ?: self::DEFAULT_AVATAR_ID;
+        $attachmentId = $user->getIdAvatar() != "" ? $user->getIdAvatar() : self::DEFAULT_AVATAR_ID;
 
         if (is_uploaded_file($_FILES["avatar"]["tmp_name"]) && $this->validateFile($_FILES["avatar"])) {
             $ext = ".".pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
