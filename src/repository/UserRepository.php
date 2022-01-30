@@ -20,17 +20,7 @@ class UserRepository extends Repository {
             throw new UserNotFoundException();
         }
 
-        return new User(
-            $user["id"],
-            $user["email"],
-            $user["password"],
-            $user["username"],
-            $user["description"] ?: "",
-            $user["date_last_login"] ?: "",
-            $user["id_avatar"] ?: "",
-            $user["status"] ?: "",
-            $user["image_src"] ?: "avatars/default.jpg",
-        );
+        return $this->mapToObject($user);
     }
 
     public function getUserByEmail(string $email): ?User {
@@ -47,17 +37,7 @@ class UserRepository extends Repository {
             throw new UserNotFoundException();
         }
 
-        return new User(
-            $user["id"],
-            $user["email"],
-            $user["password"],
-            $user["username"],
-            $user["description"] ?: "",
-            $user["date_last_login"] ?: "",
-            $user["id_avatar"] ?: "",
-            $user["status"] ?: "",
-            $user["image_src"] ?: "avatars/default.jpg",
-        );
+        return $this->mapToObject($user);
     }
 
     public function addUser(string $email, string $password, string $username) {
@@ -139,5 +119,19 @@ class UserRepository extends Repository {
             where id_following_user = $followingUserId and id_followed_user = $followedUserId
         ");
         $stmn->execute();
+    }
+
+    private function mapToObject(array $row): User {
+        return new User(
+            $row["id"],
+            $row["email"],
+            $row["password"],
+            $row["username"],
+            $row["description"] ?: "",
+            $row["date_last_login"] ?: "",
+            $row["id_avatar"] ?: "",
+            $row["status"] ?: "",
+            $row["image_src"] ?: "avatars/default.jpg",
+        );
     }
 }

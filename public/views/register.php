@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/public/css/base.css">
     <link rel="stylesheet" href="/public/css/login.css">
     <script src="https://kit.fontawesome.com/9e15be8231.js" crossorigin="anonymous"></script>
+    <script src="/public/js/password_toggle.js" defer></script>
     <script src="/public/js/registration_validation.js" defer></script>
     <title>offscript - login</title>
 </head>
