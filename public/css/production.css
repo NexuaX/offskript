@@ -116,6 +116,7 @@
     justify-self: start;
     padding: var(--padding);
     border-radius: calc(1em + var(--padding));
+    cursor: pointer;
 }
 .user-panel__button:hover {
     box-shadow: 0 0 0.1em 0.1em var(--hex-cultured);

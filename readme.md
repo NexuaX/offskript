@@ -1,6 +1,77 @@
 # offskript
----
 
 A Web apps study course project.
 
 by Albert Mouhoubi
+
+Technology: PHP, JS, CSS (all vanilla :D)
+
+screenshots of application: [link](https://drive.google.com/drive/folders/11OgIpTy786ovE40HJNb1ArX1EwoWvSyq?usp=sharing)
+
+offskript is a social platform for people who want to catalog their watch/play library, share their profiles, explore new productions and users. 
+
+![main page](https://lh3.googleusercontent.com/fife/AAWUweUnFXYdiyJ-UxViwWKN4ozsshlrrPYwT6GaUYQ-xYFo1KyOsAGq9J-7XPQZdpMYA_9idM29ZYRh1EXZ4dEX8Ht6xLoLuO69_vmcVxE4JnvKMVzvAwOuP7Bu7KSGQ2AbAJSBHiJKIPSaH1NW7H6E6TRxbiFcFVtIv5Ew7y4rGgupx8bVvGPi1RGzHTDROqMpegyOf8GdPU5_hldvNcvf2r5-pw74Rah3eBSQ3Hba07-NOWlexbgha-WQTJu9j5AhXKqIsKuWnyz2KnhM3auMiS0bFgIOQPvzXogHpTvinTvkv7gfmt7T0NQrLNaG_sIQj5njycRfOZKlAxC9fiOmt_GBL9e4YIr1sAmrcatuLwNQVq7nZknEYymm6ROQCJaPqXsuTF4RmvevgBPxlIwB9FxNHClNTLE_LldCbyXCuJytVJujRenyZCkaqioWnPblRsdzrq6pkZ6PfiVqoJSCu1mMomLHmde4E5tu7ty9pDfBJTVtL2GjONIKmcIX4Yi1unlemuS9yNWecI8IvHmcdXumruQOu_nmHu9e3tfwgENQH_LDQGGQ3brgI9STA0BQ9_dijpTutoYtuNYbGxB12FU-lMISEaOSW45T8Vv5NTiR34L7FbEiN8QpxJjOHIO4S2RGCyjesRtv-TUryrixyNFr0SO5HsqVdorXyUZX4b7t8dSkPUCMIvEU61hOEEo-7LS1npB5685Th20QIfsTb6dMu_Twbrbav8U=w992-h742-ft)
+
+### Main functions:
+
+ - providing news on relevant topics
+ - calculating service toplist, explore those productions
+ - exploring service database, search engine, filtration
+ - social view displaying the latest reviews and trending productions
+ - registration mechanism as well as singing in and log out
+ - cookie session
+ - user profile pages accessible only for logged users
+ - profile as showcase of users interest
+ - ability to share, customize and follow profiles
+ - view of the latest reviews, followers, favorites and toplist of users
+ - ability to mark as planned so user won't forget
+ - exploring reviews from other users on production
+ - recommendations
+ - trending section
+ - adding various persons as favorites
+ - different view based on login status
+
+![login form](https://lh3.googleusercontent.com/fife/AAWUweWzDQ6tpkknPdLdT5x48vTMdcOOLTvTGqy_ER2cljmhHcVHjKE-pKLCINyq5-Il7TDL_avYxh-aydsEpjloQe-ZbnVKIdbRe_BGu9rOvSYv_2JlDYtPh3XaORZyZ_ZKYJX9IsKtQdyhjuq-7QD0TElgPyf7Y1L6bxbjPm8zIRtnWEaunGHRRplhOhanaqpDtCPwvNVhqinU6eMprJzmLnYVsYy_kPQA6eHsHckd5xIYkyozv93EqDaXhhUh954KJqVZ554MkxdEmDfWeutW4BWs2MJhfHMcONaMpJ3i4xK9_TRGnJgwABdCcce4ppgtkb9HjqXASbnUB8AoWDkL6bi5K4Ml0p-rNoAEOqwdDirWdK6GNO1NGfan6MWr_667tBEsyG2S4tZ6zjVVYyC7yN1j5j4_T1PoQ_LtFCt0O7Lx-qxckhtHrScnvo0XeAWVKWBefPo_XWOz4TilrSfnH4vgCFbzceTuxFqq88fGA3YNFuonALME5rD6YKNHB3h6JFhyQP3gpnVfWvD3j6WNEr9cfb4m-83qAaU-LBfCnSDMlUM4LLxB_AxgXrMDoVV3LbMM9H0MY-sc3s8XIjcVApPtkqimVEM11booxZ72kQcdQCedN_1D66madeuLifpjNmiR3upadO1ABAIuwqta3ksFHeoaX99TfnPoXjDsXmK8CMvzyWpuRnxigQYxXgojQNz84quEYhASbvy6WqZ9EXB9MgVVKMNQblE=w1919-h937-ft)
+
+
+
+### PHP
+
+ - php 8.1 (static returns, enums, strong typing)
+ - MVC, models, views, controllers
+ - repository (singleton)
+ - exceptions
+ - routing
+ - populating views and modifying them
+ - many many database queries with interesting syntax (on conflict, returning, union etc)
+ - functions are parametrized
+ - dedicated api controller
+ - common components used across views
+
+![explorer view](https://lh3.googleusercontent.com/fife/AAWUweVwaOGy3nVGDGDHxEw2zNdIo9r0cPvEN3jGgBhN-YKp7tUywZClSHBsvZp6zCmXcN5dTM7fnmYA4vAXhNrgW2aMFbVPY26ZswZir4npZrEYw5ni5688Hn0QMZYxqsMbR_PHFlMKkx-em7t2lRvqAyQAAhRdpJ0hTm1DGZ9WJMQoXwguEvibTM3fbBBsE8wD8S3CeHW8lgZYJ3RsRDmt8smySBD-8tfJJIpf6sOgnY1gOIFPLxqJsiPAvtHODdmJDJghuuFhO8yrbDdnbXoxyqTMAYrquAqkQuYilHlTF-7fCn3y42lT-3Vs48FjQctJPl3RphYnm04VINaxu-fpCeFr50SiVQl4iarekcFNXPIDEjPxegqChStStqwYoRVDqOHuD2CAefWlQKnlqD6IMD7_TtNL-rzIke2n0ghjb1Jni1I2aon2p2m1qis3R1PFhSk93R3gKf6iwMN7yGt1W5LNfbw0jXAIuf8UCR24YnEi2L9E4hvnRSRgZV1pMoYFVlMRkUvrp9-ewD7kBU04jvY76xMmeGXJFlTsLrnYLjw0tjoYzKh-zItF552DJipQT7L54IXjbK6L4Ssq84l6nVbygU96uYLivFzXFO6EdhJ9NxgsrUBNOxOVDTT-mQ2jhmSbKsTRvmBlJ1gJNpO0UgHuqMhfYEhs4IH7YJdBqE5vZLRhcOdYBodYmcdNVA8strsZ-BbdO3wPNfLGLB_AvkjUQ-s7ZhKTG_U=w992-h742-ft)
+
+### CSS
+
+ - modern styles and functions (inset, calc, grid/flex, variables)
+ - responsive
+ - proprietary animations and transitions
+ - split to files to use common declarations
+ - using naming convention
+ - cross compatibility and backwards compatibility (in reasonable extent)
+
+![profile view](https://lh3.googleusercontent.com/fife/AAWUweVFZvGqcUw5mkTwwA1v2kldIU15LrMMv5GdluAoaIUuuyWoDxKGHHPoDMogzI4sQLX9QJ4kaSMfsO0951KoHIjl7lT7NrQKmMYzeVoEOvFyKPyTPULxEb3SckCodslQlO4FcEwIUTFVe_7Jlc2Fx_duT86NibGB1iL_AYWaMc41HF_QW90GtNRcomD658RlVJzCIzUfu5HW4qouGMxnLePGmyQolHot3EGB65iJ3EIMFebtVoteFoWAuG-UClmqVjnkoQQUswovwMngNvfh6H7CdpCvIQ-eZden-U9w96AH7J_LJTxgdyADpZlUaXxaI_t03QmjRe0WlTJ5DJXJnI2Y4hVyQqiCsgnvIJh_3PBsgEPkcMqd5q0k8ybRMbDFSWVYjzGywV_SUqVuPPe-FZZVYcV-qrIItwKC-_p4oVMC0bwzhkC0REcubLptdlupJEbo1l1VZgn83HYpggtTteizs1ZE3nFn1d7q0UQjfGTZRiw8Bf6BIZqwkjq7EHLcBDMJdAitkqfuy9jgtvxQlmsalWI80cFJttaK0mm9fgnzIV2ESErM9-AoXQrTKRekRxun0XOO0N16wScTBiQ89Wc6wXLqE6TLo2EAnZg_u9H6MYKgZIOunSAI6aH5Df6Z51DssC_KtwqDHGFrJizTGguEwyfdJxeJG3GyQOJ0YyVMeg0gyVAITDcP513L8R-vdYtEZNoEAB-PUPTlAezaJZtU8OdVNadSytM=w1919-h937-ft)
+
+### JS
+
+ - DOM manipulation
+ - functional hamburger menu
+ - fetching data from server
+ - data validations
+ - buttons handlers
+ - ui features generation based on data
+
+![production view](https://lh3.googleusercontent.com/fife/AAWUweVDjsFvKe9LtZ13Tg2IVlZas3t6fRZazy4o3fVHyRJxLHMIvc58liSnVkBMRT0WXVJEuh80rlzpJqPCmzqj1Z2f_pGi2hHq-DxVSrz9jw19OtNgzxlKM42vSJO2oTL_3Mj0MqwZ01MNG_24atv0hz3d5uy5LrN-wck0BEwLPNIUDTsQCTmOyra8DX2FOpBwcTsPAXeEzgSyEtO2b-KIS6J0Xq7EiQECzY63Rt9euKBtqL-Pjuq7_UzxQqQEqa8lr7CUKscOxaEGCEx8xTkqZAGdTSGPLKN648HmSuCwpr3WNDuzpajx2eUAwqTA15D50FimNEKbpVMq15tAoLA0o6gq8nnEhAbB3ullBx5YS0KEYVwOHSGaIWnRKHpgpOWLTG1zwriYAKGnMBS1exNd3TkeSjKw3FKLvo5NcWyhlI_DGvDJBD368fFxvPaCh0ESJwRuq1IA9ZvOB3Zsm-cBqnjuQ5kQ1iP8MJHnCMn80K-RCSMYu9yVQncJzva2bYyJ8gDUmVn6XviQLMfxBb_6XjSwKeFQqcNrWRK7U51zzTKHOv_RgpPyI3Fpp7dMUM_3iTsjQH-1YG9ZRcfXpNrMzSze_lF4fZyRAA1BXTpF2CRMMDrynwkWrf_hRf_cY7YWm1M3LmHgp2SZS9D8igm9R17N3LZA6ejdrFYwBmIvP8Ou9bq16CdhntuSDztJWhBR0ZJ-VlWHH2lrgY8LF33_fzy__RJ-l_dVQMg=w992-h742-ft)
+
+#### Last words
+
+everything here was written from scratch, it's not perfect but an honest work.

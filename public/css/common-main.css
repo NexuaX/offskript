@@ -105,6 +105,9 @@
     justify-content: space-around;
     gap: var(--gap);
 }
+.footer-nav-item:hover {
+    text-decoration: underline;
+}
 
 @media (max-width: calc(900px - 1px)) {
     body[data-navigation-visible="true"] .nav__hamburger {
@@ -135,6 +138,14 @@
 @media (min-width: 600px) {
     .top-content__title {
         margin: calc(var(--margin) * 1.5) 0;
+    }
+    .footer {
+        grid-template-columns: var(--width-min) auto;
+        gap: var(--gap);
+        align-items: center;
+    }
+    .footer-nav {
+        column-gap: calc(var(--gap) * 2);
     }
 }
 

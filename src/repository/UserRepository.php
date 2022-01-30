@@ -93,6 +93,22 @@ class UserRepository extends Repository {
         return $rows;
     }
 
+    public function getFollowedUsers(string $userId) {
+
+        $stmn = $this->database->connect()->prepare("
+            select us.*, ua.username, coalesce(a.image_src, 'avatars/default.jpg') as image_src from user_stats us
+            left join user_accounts ua on us.id = ua.id
+            left join attachments a on a.id = ua.id_avatar
+            where us.id in (select id_followed_user from follows where id_following_user = $userId )
+            order by random() limit 5;
+        ");
+        $stmn->execute();
+
+        $rows = $stmn->fetchAll(PDO::FETCH_ASSOC);
+
+        return $rows;
+    }
+
     public function isFollowedByUser(string $userId, string $userIdToCheck) {
 
         $stmn = $this->database->connect()->prepare("

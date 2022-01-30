@@ -105,7 +105,7 @@
         </section>
 
         <section class="flex section section--random-users">
-            <h2 class="section__title">Other users</h2>
+            <h2 class="section__title">Followed users</h2>
             <div class="section__horizontal-line"></div>
             <div class="grid random-users-grid">
 
