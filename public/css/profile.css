@@ -255,6 +255,9 @@
     padding: var(--padding);
     width: 100%;
 }
+.random-users-grid {
+    gap: var(--gap);
+}
 .random-user-item {
     background-color: white;
 }
