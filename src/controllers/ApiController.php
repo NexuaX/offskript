@@ -1,24 +1,11 @@
 <?php
 
 require_once 'AppController.php';
-require_once __DIR__."/../repository/NewsRepository.php";
-require_once __DIR__."/../repository/ProductionRepository.php";
-require_once __DIR__."/../repository/UserRepository.php";
-require_once __DIR__."/../repository/WatchlistRepository.php";
-require_once __DIR__."/../repository/FavoriteRepository.php";
 require_once __DIR__."/../../CookieSession.php";
 
 class ApiController extends AppController {
 
-    private Repository $newsRepository;
-    private Repository $productionRepository;
-    private Repository $userRepository;
-    private Repository $watchlistRepository;
-    private Repository $favoriteRepository;
-
     public function explorerSearch(array $params = []) {
-
-        $this->productionRepository = ProductionRepository::getInstance();
 
         if ($this->isJsonType()) {
             $decoded = $this->decodeDataFromInput();
@@ -34,8 +21,6 @@ class ApiController extends AppController {
 
     public function indexNews(array $params = []) {
 
-        $this->newsRepository = NewsRepository::getInstance();
-
         if ($this->isJsonType()) {
             $this->setHeaderAndCode();
             echo json_encode($this->newsRepository->getNews(true));
@@ -43,8 +28,6 @@ class ApiController extends AppController {
     }
 
     public function globalTopList() {
-
-        $this->productionRepository = ProductionRepository::getInstance();
 
         if ($this->isJsonType()) {
             $this->setHeaderAndCode();
@@ -54,8 +37,6 @@ class ApiController extends AppController {
     }
 
     public function addToWatchList() {
-
-        $this->watchlistRepository = WatchlistRepository::getInstance();
 
         if ($this->isJsonType()) {
             $decoded = $this->decodeDataFromInput();
@@ -70,8 +51,6 @@ class ApiController extends AppController {
 
     public function addUserReview() {
 
-        $this->watchlistRepository = WatchlistRepository::getInstance();
-
         if ($this->isJsonType()) {
             $decoded = $this->decodeDataFromInput();
             $this->setHeaderAndCode();
@@ -84,8 +63,6 @@ class ApiController extends AppController {
     }
 
     public function removeFromUserWatchList() {
-
-        $this->watchlistRepository = WatchlistRepository::getInstance();
 
         if ($this->isJsonType()) {
             $decoded = $this->decodeDataFromInput();
@@ -100,8 +77,6 @@ class ApiController extends AppController {
 
     public function getOtherReviewsOnProduction() {
 
-        $this->watchlistRepository = WatchlistRepository::getInstance();
-
         if ($this->isJsonType()) {
             $decoded = $this->decodeDataFromInput();
             $this->setHeaderAndCode();
@@ -111,8 +86,6 @@ class ApiController extends AppController {
     }
 
     public function getProductionEntities() {
-
-        $this->productionRepository = ProductionRepository::getInstance();
 
         if ($this->isJsonType()) {
             $decoded = $this->decodeDataFromInput();
@@ -124,8 +97,6 @@ class ApiController extends AppController {
     }
 
     public function markEntityAsFavorite() {
-
-        $this->favoriteRepository = FavoriteRepository::getInstance();
 
         if ($this->isJsonType()) {
             $decoded = $this->decodeDataFromInput();
@@ -139,8 +110,6 @@ class ApiController extends AppController {
 
     public function removeEntityAsFavorite() {
 
-        $this->favoriteRepository = FavoriteRepository::getInstance();
-
         if ($this->isJsonType()) {
             $decoded = $this->decodeDataFromInput();
             $this->setHeaderAndCode();
@@ -153,8 +122,6 @@ class ApiController extends AppController {
 
     public function getRecommendations() {
 
-        $this->productionRepository = ProductionRepository::getInstance();
-
         if ($this->isJsonType()) {
             $decoded = $this->decodeDataFromInput();
             $this->setHeaderAndCode();
@@ -164,8 +131,6 @@ class ApiController extends AppController {
     }
 
     public function getUserReviews(array $params = []) {
-
-        $this->watchlistRepository = WatchlistRepository::getInstance();
 
         if ($this->isJsonType()) {
             $this->setHeaderAndCode();
@@ -177,8 +142,6 @@ class ApiController extends AppController {
 
     public function getFollowedUsers(array $params = []) {
 
-        $this->userRepository = UserRepository::getInstance();
-
         if ($this->isJsonType()) {
             $this->setHeaderAndCode();
 
@@ -188,8 +151,6 @@ class ApiController extends AppController {
     }
 
     public function getUserFavorites(array $params = []) {
-
-        $this->favoriteRepository = FavoriteRepository::getInstance();
 
         if ($this->isJsonType()) {
             $this->setHeaderAndCode();
@@ -201,8 +162,6 @@ class ApiController extends AppController {
 
     public function getUserTopList(array $params = []) {
 
-        $this->watchlistRepository = WatchlistRepository::getInstance();
-
         if ($this->isJsonType()) {
             $this->setHeaderAndCode();
 
@@ -212,8 +171,6 @@ class ApiController extends AppController {
     }
 
     public function followUser() {
-
-        $this->userRepository = UserRepository::getInstance();
 
         if ($this->isJsonType()) {
             $decoded = $this->decodeDataFromInput();
@@ -226,8 +183,6 @@ class ApiController extends AppController {
     }
 
     public function unfollowUser() {
-
-        $this->userRepository = UserRepository::getInstance();
 
         if ($this->isJsonType()) {
             $decoded = $this->decodeDataFromInput();

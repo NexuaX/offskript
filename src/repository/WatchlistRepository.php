@@ -74,7 +74,7 @@ class WatchlistRepository extends Repository {
             left join productions p on p.id = uw.id_production 
             join attachments a on p.id_poster = a.id
             where uw.id_user = $userId and uw.is_planned = false
-            order by date_modified limit 5
+            order by date_modified desc limit 5
         ");
         $stmn->execute();
 
