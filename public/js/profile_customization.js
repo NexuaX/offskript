@@ -7,6 +7,8 @@ const closeProfileEditorIcon = document.querySelector(".close-icon");
 const saveProfileButton = document.querySelector(".save-button");
 const cancelProfileButton = document.querySelector(".cancel-button");
 
+const shareTooltip = document.querySelector(".share-profile-button .tooltip");
+
 shareProfileButton?.addEventListener("click", () => {
     const textarea = document.createElement("textarea");
     textarea.classList.add("hidden-textarea");
@@ -16,6 +18,10 @@ shareProfileButton?.addEventListener("click", () => {
     textarea.select();
     document.execCommand("copy");
     document.body.removeChild(textarea);
+    shareTooltip.setAttribute("data-visible", "true");
+    setTimeout(() => {
+        shareTooltip.setAttribute("data-visible", "false");
+    }, 2000);
 });
 
 followProfileButton?.addEventListener("click", () => {

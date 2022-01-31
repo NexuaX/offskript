@@ -46,6 +46,33 @@
 }
 .share-profile-button {
     background-color: var(--hex-airblue);
+    position: relative;
+}
+.share-profile-button .tooltip {
+    position: absolute;
+    bottom: 90%;
+    left: 50%;
+    opacity: 0;
+    background-color: var(--hex-jet);
+    color: var(--hex-cultured);
+    text-align: center;
+    padding: var(--padding);
+    border-radius: 5px;
+    z-index: 5;
+    transition: opacity 0.2s;
+}
+.share-profile-button .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--hex-jet) transparent transparent transparent;
+}
+.tooltip[data-visible=true] {
+    opacity: 1;
 }
 .follow-profile-button, .unfollow-profile-button {
     background-color: var(--hex-cinnabar);
