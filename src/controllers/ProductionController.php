@@ -1,13 +1,8 @@
 <?php
 
-require_once __DIR__."/../repository/ProductionRepository.php";
-require_once __DIR__."/../repository/WatchlistRepository.php";
 require_once __DIR__."/../../CookieSession.php";
 
 class ProductionController extends AppController {
-
-    private Repository $productionRepository;
-    private Repository $watchlistRepository;
 
     public function production(array $params = []) {
 
@@ -17,8 +12,6 @@ class ProductionController extends AppController {
         }
 
         $productionId = $params[1];
-        $this->productionRepository = ProductionRepository::getInstance();
-        $this->watchlistRepository = WatchlistRepository::getInstance();
 
         $production = $this->productionRepository->getProduction($productionId);
         $isUserLogged = CookieSession::isUserLogged();

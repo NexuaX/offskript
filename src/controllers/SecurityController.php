@@ -1,7 +1,6 @@
 <?php
 
 require_once 'AppController.php';
-require_once __DIR__."/../repository/UserRepository.php";
 require_once __DIR__ .'/../models/User.php';
 require_once __DIR__ . "/../exceptions/EmailAlreadyUsedException.php";
 require_once __DIR__ . "/../exceptions/UserNotFoundException.php";
@@ -17,13 +16,11 @@ class SecurityController extends AppController {
             return;
         }
 
-        $userRepository = UserRepository::getInstance();
-
         $email = $_POST['email'];
         $password = $_POST['password'];
 
         try {
-            $user = $userRepository->getUserByEmail($email);
+            $user = $this->userRepository->getUserByEmail($email);
         } catch (UserNotFoundException $e) {
             $this->render('login', ['messages' => [$e->errorMessage()]]);
             return;
@@ -47,8 +44,6 @@ class SecurityController extends AppController {
             return;
         }
 
-        $userRepository = UserRepository::getInstance();
-
         $email = $_POST['email'];
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -60,7 +55,7 @@ class SecurityController extends AppController {
         }
 
         try {
-            $userRepository->addUser($email, $password, $username);
+            $this->userRepository->addUser($email, $password, $username);
         } catch (EmailAlreadyUsedException | SQLExecuteException $e) {
             $this->render('register', ["messages" => [$e->errorMessage()]]);
             return;

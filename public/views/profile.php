@@ -64,6 +64,7 @@
                     </div>
                 <?php endif; ?>
                 <div class="profile-button share-profile-button" data-id="<?php echo $user->getId(); ?>">
+                    <div data-visible="false" class="tooltip">Copied!</div>
                     <i class="fas fa-share-alt"></i> Share profile
                 </div>
             </div>

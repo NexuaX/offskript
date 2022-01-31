@@ -12,10 +12,10 @@ const userStats = {
     },
 
     notZero: function() {
-        return (this.movies === 0) +
-            (this.shows === 0) +
-            (this.animes === 0) +
-            (this.games === 0);
+        return (this.movies !== 0) +
+            (this.shows !== 0) +
+            (this.animes !== 0) +
+            (this.games !== 0);
     }
 };
 
