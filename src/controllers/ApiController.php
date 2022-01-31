@@ -175,18 +175,6 @@ class ApiController extends AppController {
         }
     }
 
-    public function getRandomUsers(array $params = []) {
-
-        $this->userRepository = UserRepository::getInstance();
-
-        if ($this->isJsonType()) {
-            $this->setHeaderAndCode();
-
-            $userId = $params[1] ?? CookieSession::getUserCookie();
-            echo json_encode($this->userRepository->getRandomUsers($userId));
-        }
-    }
-
     public function getFollowedUsers(array $params = []) {
 
         $this->userRepository = UserRepository::getInstance();

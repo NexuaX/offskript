@@ -77,13 +77,13 @@ class UserRepository extends Repository {
         $stmn->execute();
     }
 
-    public function getRandomUsers(string $id = "0"): array {
+    public function getRandomUsers(string $userId = "0"): array {
 
         $stmn = $this->database->connect()->prepare("
             select us.*, ua.username, coalesce(a.image_src, 'avatars/default.jpg') as image_src from user_stats us
             left join user_accounts ua on us.id = ua.id
             left join attachments a on a.id = ua.id_avatar
-            where us.id not in (select id_following_user from follows where id_followed_user = $id ) and us.id != $id
+            where us.id not in (select id_following_user from follows where id_followed_user = $userId ) and us.id != $userId
             order by random() limit 5;
         ");
         $stmn->execute();

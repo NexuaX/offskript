@@ -26,9 +26,14 @@ class DefaultController extends AppController {
         $this->watchlistRepository = WatchlistRepository::getInstance();
         $this->productionRepository = ProductionRepository::getInstance();
 
+        $userId = "0";
+        if (CookieSession::isUserLogged()) {
+            $userId = CookieSession::getUserCookie();
+        }
+
         $this->render('social', [
-            "reviews" => $this->watchlistRepository->getOtherUsersReviews(),
-            "randomUsers" => $this->userRepository->getRandomUsers(),
+            "reviews" => $this->watchlistRepository->getOtherUsersReviews($userId),
+            "randomUsers" => $this->userRepository->getRandomUsers($userId),
             "trendingProds" => $this->productionRepository->getTrending()
         ]);
     }

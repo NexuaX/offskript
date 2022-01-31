@@ -4,7 +4,7 @@ require_once __DIR__."/../models/UserWatchlistItem.php";
 
 class WatchlistRepository extends Repository {
 
-    public function getOtherUsersReviews(string $userId = ""): array {
+    public function getOtherUsersReviews(string $userId = "0"): array {
 
         $stmn = $this->database->connect()->prepare("
             select uw.*, ua.username, coalesce(a2.image_src, 'avatars/default.jpg') as user_image, p.title, p.type, a.image_src as production_image from user_watchlist uw 
@@ -12,7 +12,7 @@ class WatchlistRepository extends Repository {
             left join productions p on p.id = uw.id_production 
             left join attachments a on p.id_poster = a.id
             left join attachments a2 on a2.id = ua.id_avatar
-            where uw.is_planned = false
+            where uw.is_planned = false and uw.id_user != $userId
             order by date_modified limit 5
         ");
         $stmn->execute();
@@ -143,7 +143,7 @@ class WatchlistRepository extends Repository {
 
         $stmn = $this->database->connect()->prepare("
             update user_watchlist 
-            set mark = $mark, heart = :isHeart, review = '$review' 
+            set mark = $mark, heart = :isHeart, review = '$review', date_modified = now()
             where id_user = :userId and id_production = $prodId
         ");
         $stmn->bindParam(":isHeart", $isHeart, PDO::PARAM_BOOL);
