@@ -23,7 +23,7 @@ class ProfileController extends AppController {
         }
 
         $user = null;
-        $userId = $params[1] ?? CookieSession::getUserCookie();
+        $userId = $params[1] ?? CookieSession::getUserId();
 
         try {
             $user = $this->userRepository->getUser($userId);
@@ -37,8 +37,8 @@ class ProfileController extends AppController {
         $this->render('profile', [
             "user" => $user,
             "userStats" => $userStats,
-            "loggedUserProfile" => $userId == CookieSession::getUserCookie(),
-            "isFollowedUser" => $this->userRepository->isFollowedByUser(CookieSession::getUserCookie(), $userId) == 1]);
+            "loggedUserProfile" => $userId == CookieSession::getUserId(),
+            "isFollowedUser" => $this->userRepository->isFollowedByUser(CookieSession::getUserId(), $userId) == 1]);
     }
 
     public function changeUserData() {
@@ -49,7 +49,7 @@ class ProfileController extends AppController {
         }
 
         $this->message = "";
-        $userId = CookieSession::getUserCookie();
+        $userId = CookieSession::getUserId();
         $user = null;
         try {
             $user = $this->userRepository->getUser($userId);

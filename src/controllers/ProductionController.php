@@ -17,7 +17,7 @@ class ProductionController extends AppController {
         $isUserLogged = CookieSession::isUserLogged();
         $userReview = null;
         if ($isUserLogged) {
-            $userReview = $this->watchlistRepository->getUserProductionReview(CookieSession::getUserCookie(), $productionId);
+            $userReview = $this->watchlistRepository->getUserProductionReview(CookieSession::getUserId(), $productionId);
         }
 
         $this->render('production', [

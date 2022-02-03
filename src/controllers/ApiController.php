@@ -42,7 +42,7 @@ class ApiController extends AppController {
             $decoded = $this->decodeDataFromInput();
             $this->setHeaderAndCode();
 
-            $userId = CookieSession::getUserCookie() == "" ? 10 : CookieSession::getUserCookie();
+            $userId = CookieSession::getUserId();
             $this->watchlistRepository->addToUserList($userId, $decoded["productionId"], $decoded["isPlanned"]);
 
             echo json_encode("ok");
@@ -55,7 +55,7 @@ class ApiController extends AppController {
             $decoded = $this->decodeDataFromInput();
             $this->setHeaderAndCode();
 
-            $userId = CookieSession::getUserCookie() == "" ? 10 : CookieSession::getUserCookie();
+            $userId = CookieSession::getUserId();
             $this->watchlistRepository->giveReview($userId, $decoded["productionId"], $decoded["mark"], $decoded["heart"], $decoded["review"]);
 
             echo json_encode("ok");
@@ -68,7 +68,7 @@ class ApiController extends AppController {
             $decoded = $this->decodeDataFromInput();
             $this->setHeaderAndCode();
 
-            $userId = CookieSession::getUserCookie() == "" ? 10 : CookieSession::getUserCookie();
+            $userId = CookieSession::getUserId();
             $this->watchlistRepository->removeFromUserList($userId, $decoded["productionId"]);
 
             echo json_encode("ok");
@@ -91,7 +91,7 @@ class ApiController extends AppController {
             $decoded = $this->decodeDataFromInput();
             $this->setHeaderAndCode();
 
-            $userId = CookieSession::getUserCookie() == "" ? "0" : CookieSession::getUserCookie();
+            $userId = CookieSession::getUserId();
             echo json_encode($this->productionRepository->getProductionEntities($decoded["productionId"], $userId));
         }
     }
@@ -102,7 +102,7 @@ class ApiController extends AppController {
             $decoded = $this->decodeDataFromInput();
             $this->setHeaderAndCode();
 
-            $userId = CookieSession::getUserCookie() == "" ? "0" : CookieSession::getUserCookie();
+            $userId = CookieSession::getUserId();
             $this->favoriteRepository->addUserFavoriteWithType($userId, $decoded["entityId"], $decoded["type"]);
             echo json_encode("ok");
         }
@@ -114,7 +114,7 @@ class ApiController extends AppController {
             $decoded = $this->decodeDataFromInput();
             $this->setHeaderAndCode();
 
-            $userId = CookieSession::getUserCookie() == "" ? "0" : CookieSession::getUserCookie();
+            $userId = CookieSession::getUserId();
             $this->favoriteRepository->removeUserFavoriteDirector($userId, $decoded["entityId"]);
             echo json_encode("ok");
         }
@@ -135,7 +135,7 @@ class ApiController extends AppController {
         if ($this->isJsonType()) {
             $this->setHeaderAndCode();
 
-            $userId = $params[1] ?? CookieSession::getUserCookie();
+            $userId = $params[1] ?? CookieSession::getUserId();
             echo json_encode($this->watchlistRepository->getUserReviews($userId));
         }
     }
@@ -145,7 +145,7 @@ class ApiController extends AppController {
         if ($this->isJsonType()) {
             $this->setHeaderAndCode();
 
-            $userId = $params[1] ?? CookieSession::getUserCookie();
+            $userId = $params[1] ?? CookieSession::getUserId();
             echo json_encode($this->userRepository->getFollowedUsers($userId));
         }
     }
@@ -155,7 +155,7 @@ class ApiController extends AppController {
         if ($this->isJsonType()) {
             $this->setHeaderAndCode();
 
-            $userId = $params[1] ?? CookieSession::getUserCookie();
+            $userId = $params[1] ?? CookieSession::getUserId();
             echo json_encode($this->favoriteRepository->getUserFavorites($userId));
         }
     }
@@ -165,7 +165,7 @@ class ApiController extends AppController {
         if ($this->isJsonType()) {
             $this->setHeaderAndCode();
 
-            $userId = $params[1] ?? CookieSession::getUserCookie();
+            $userId = $params[1] ?? CookieSession::getUserId();
             echo json_encode($this->watchlistRepository->getUserToplist($userId));
         }
     }
@@ -176,7 +176,7 @@ class ApiController extends AppController {
             $decoded = $this->decodeDataFromInput();
             $this->setHeaderAndCode();
 
-            $userId = CookieSession::getUserCookie();
+            $userId = CookieSession::getUserId();
             $this->userRepository->followUser($userId, $decoded["followedUserId"]);
             echo json_encode("ok");
         }
@@ -188,7 +188,7 @@ class ApiController extends AppController {
             $decoded = $this->decodeDataFromInput();
             $this->setHeaderAndCode();
 
-            $userId = CookieSession::getUserCookie();
+            $userId = CookieSession::getUserId();
             echo $userId;
             $this->userRepository->unfollowUser($userId, $decoded["followedUserId"]);
             echo json_encode("ok");

@@ -31,7 +31,7 @@ class SecurityController extends AppController {
             return;
         }
 
-        CookieSession::logUserCookie($user->getId());
+        CookieSession::createUserSession($user->getId());
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: $url/profile");
@@ -68,7 +68,7 @@ class SecurityController extends AppController {
     public function logout(array $params = []) {
 
         if (CookieSession::isUserLogged()) {
-            CookieSession::destroyUserCookie();
+            CookieSession::destroyUserSession();
         }
 
         $url = "http://$_SERVER[HTTP_HOST]";

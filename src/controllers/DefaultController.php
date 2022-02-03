@@ -16,7 +16,7 @@ class DefaultController extends AppController {
 
         $userId = "0";
         if (CookieSession::isUserLogged()) {
-            $userId = CookieSession::getUserCookie();
+            $userId = CookieSession::getUserId();
         }
 
         $this->render('social', [
